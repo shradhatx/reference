@@ -1,7 +1,7 @@
 # reference
 Reference material to review before any job inteview
 
-# Strengths
+# Strength
 - motivated to do the best & deliver high quality solu, I am adaptable, result driven- Always in
 touch with the business goals while deep diving in technology- problem solving skills.
 - Have emotional maturity.
@@ -9,19 +9,20 @@ touch with the business goals while deep diving in technology- problem solving s
 team.
 - I have deep understanding of technologies and processes surrounding Big Data. I can help
 develop business use cases, prototypes, analyze test data applying statistical and predictive methods and present useful insights.
+
 # Weakness
 I had as PM - challenge to say no to work request -inundated with continuously changing demands. Learned the importance to prioritize intake - team or people work best when targets are achievable - challenging but possible.
 Now value pragmatism over perfection.
 
 # Questions to ask interviewer
 
-Q: is there anything i can tell you about me that would help you make a hiring decision?
-Q : tell me about your process of customer engagement and solution implementation & delivery strategy.
-Q: Is the solution hosted on cloud or on-premise?
-Q: Technologies you are using - real time spark /storm /impala
-Q: If I were hired what would my project look like? what is your (or scope & life) most recent project (that is completed) about?
-Q: what are the skills/qualities that you desire in the person you hire?
-Q: what are the imminent challenges in the project/team?
+> Q: is there anything i can tell you about me that would help you make a hiring decision?
+> Q : tell me about your process of customer engagement and solution implementation & delivery strategy.
+> Q: Is the solution hosted on cloud or on-premise?
+> Q: Technologies you are using - real time spark /storm /impala
+> Q: If I were hired what would my project look like? what is your (or scope & life) most recent project (that is completed) about?
+> Q: what are the skills/qualities that you desire in the person you hire?
+> Q: what are the imminent challenges in the project/team?
 
 ### Technical reference
 * [elkref] - all about elastic stack
