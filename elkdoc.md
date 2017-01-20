@@ -372,6 +372,274 @@ Comment: technologies are complementary… there is a bit of an overlap…this g
 
 Relevance - what’s different about this population than the rest of the documents
 
+## Lucene
+Machine learning algorithms:
+http://www.kdnuggets.com/2016/08/10-algorithms-machine-learning-engineers.html
+
+Relevancy based on TF (term freq) /IDF (inverse document freq) - ranking of results using vector space model. Document is just a bag or words - the position of word in doc is not considered relevant.
+Elastic uses this similarly model to extract what extent the texts are similar.
+Classification of documents into finite set of categories where categories are known.
+
+Similarity model: bm25 - a probabilistic model
+
+How lucene does tf/idf ?  As it aims for performance the formula is not calculated entirely at query time. It uses the similarity model both while indexing and querying.
+Lucent scoring is blazingly fast and hides the complexity from user.
+Lucent uses vector space mode(VSM) and applies Boolean model for refinement. It also allows you to customize the Lucene internals in Changing your Scoring -- Expert Level
+
+See the scoring formula here-
+
+https://lucene.apache.org/core/3_6_0/scoring.html
+
+
+tf/idf performs pretty well. But there are other candidates that offer more tuning flexibility (ex: bm25 good for short documents)
+tf/idf is not the only ranking contributor in Elastic. Rank similarity in lucene/elastic is not a pure tf/idf implementation. (Ex: it does account for document length normalization too)  {difficult to compare with academic papers)
+
+Similarity model of lucene: VSM score, lucene conceptual scoring formula. practical scoring function
+
+You can customize/improve lucene by-
+      -Implementing your own query class,
+      -Change similarities factor
+
+ML (LDA or Word2Vec) - lot of statistical stuff to get to the answer. It is complex. It goes beyond simple tfidf feature extraction and direct matching. To determine the accuracy or improve you only have to apply models, predict and compare the result with actual and fine tune.
+
+To create a good search experience it is key to combine textual similarity rank with metadata suiting the case.
+Compare the precision and recall of models.
+Precision- the percentage of relevant queries within the result
+Recall- the percentage of all relevant documents that are included in the result
+
+I strongly recommend taking the time to test both models with your documents- there can be a significant potential in using one model over other.
+
+Circumstantial Vs general proof.
+
+
+> Identify:
+i)String fields that are of exact-value —> not_analyzed
+ii)Full text fields that use standard or english language analyzer
+iii)one or two fields that need custom analyzer ex title field may need to be indexed in a way that supports find-as-you-type
+
+
+full text search ex: match is high level search and preferred than term as they understand field level mappings
+term based - looks at inverted index for single term
+Analyzers can be specified at three levels: per-field, per-index or the global default. 
+
+## Queries
+phrase matching or proximity matching
+{
+    "query": {
+        "match_phrase": {
+            "title": {
+		“query”: “quick fox”,
+		“slop”:1
+		}
+        }
+    }
+}
+
+## String query (not analyzed)
+
+1. Full text (analyzed) - usually you want full query rather than individual terms 
+{
+    "query": {
+        "match": {
+            "title": “Family Medicine!”
+        }
+    }
+}
+## Note: about search result in match of one word or both with any other word in between
+
+To add precision
+{
+    "query": {
+        "match": {
+            "title": {
+		“query”: “Family Medicine!”
+	    	“operator”: “and”
+             }
+	}
+    }
+}
+
+## note: the above search requires both word be present
+
+{
+    "query": {
+        "match": {
+            "title": {
+	   	“query”: “quick brown dog”
+	    	“minimum should match”: “75%”
+		}
+        }
+    }
+}
+## Note:above should match rules can be adjusted or use along with bool
+{
+  "query": {
+    "bool": {
+      "must":     { "match": { "title": "quick" }},
+      "must_not": { "match": { "title": "lazy"  }},
+      "should": [
+                  { "match": { "title": "brown" }},
+                  { "match": { "title": "dog"   }}
+      ]
+    }
+  }
+}
+## Note: above should clauses get more weight than must
+
+curl -XGET 'localhost:9200/_search?pretty' -d'
+{
+    "query": {
+        "bool": {
+            "must": {
+                "match": {  
+                    "content": {
+                        "query":    "full text search",
+                        "operator": "and"
+                    }
+                }
+            },
+            "should": [
+                { "match": {
+                    "content": {
+                        "query": "Elasticsearch",
+                        "boost": 3 
+                    }
+                }},
+                { "match": {
+                    "content": {
+                        "query": "Lucene",
+                        "boost": 2 
+                    }
+                }}
+            ]
+        }
+    }
+}'
+## Note: able further boost
+* Single term queries are better expressed as filters and benefit by caching and no score needed
+GET /_search
+{
+    "query": {
+        "constant_score": {
+            "filter": {
+                “state”: { “tx” }
+            }
+        }
+    }
+}
+
+
+## dis_max example
+
+{
+    "query": {
+        "dis_max": {
+            "queries": [
+                { "match": { "title": "Brown fox" }},
+                { "match": { "body":  "Brown fox" }}
+            ]
+        }
+    }
+}
+
+
+## combining first_name and last_name to full_name
+
+one custom _allfield for the person’s name, and another custom _all field for the address.
+
+PUT /my_index
+{
+    "mappings": {
+        "person": {
+            "properties": {
+                "first_name": {
+                    "type":     "string",
+                    "copy_to":  "full_name" 
+
+                },
+                "last_name": {
+                    "type":     "string",
+                    "copy_to":  "full_name" 
+
+                },
+                "full_name": {
+                    "type":     "string"
+                }
+            }
+        }
+    }
+}
+
+## Alternately cross-field queries provide the solution at search time. Advantage of per field boosting
+{
+    "query": {
+        "multi_match": {
+            "query":       "peter smith",
+            "type":        "cross_fields",
+            "fields":      [ "title^2", "description" ] 
+        }
+    }
+}
+
+## Partial matching (not whole term)
+In inverted index only terms exist
+matching part of the term and not the whole term i.e. finding fragment of the word eg from sql world %fox%
+
+stemmer provides a way to index words in their root form
+
+partial matching on non_analyzed fields like postal code
+
+postal code that starts with…
+search_as_you_type displaying the most likely results before the user has finished typing the search terms
+
+prefix query …
+
+PUT /my_index
+{
+    "mappings": {
+        "address": {
+            "properties": {
+                "postcode": {
+                    "type":  "string",
+                    "index": "not_analyzed"
+                }
+            }
+        }
+    }
+}
+
+
+GET /my_index/address/_search
+{
+    "query": {
+        "prefix": {
+            "postcode": "W1"
+        }
+    }
+}
+
+* wildcard and regex queries
+GET /my_index/address/_search
+{
+    "query": {
+        "wildcard": {
+            "postcode": "W?F*HW" 
+        }
+    }
+}
+
+——
+{
+    "query": {
+        "regexp": {
+            "postcode": "W[0-9].+" 
+        }
+    }
+}
+
+* caveat: Running prefix, regex, wildcard queries on a field with many unique terms can be resource intensive
+
+
 ### Technical reference
 * [elkref] - all about elastic stack
 * [sparkref] - Spark

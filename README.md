@@ -2,8 +2,46 @@
 Reference material to review before any job inteview
 
 # Introduction
+My name is Shradha Bhalla, I am an IT professional using Big data trending technologies for business use cases for 3 years now. 
 
+I have varied experience in Enterprise IT - managed high performance teams bad high risk projects in software dev, infrastructure upgrade, tech refresh etc.
 
+Business verticals - Banking, Telecom, Healthcare, Services - Insurance
+Education background- EE and Masters in CS
+
+Goal - technical consulting role as big data solution architecture leveraging big data trending technologies and virtualhybrid/server-less infrastructure.   OR a senior developer/lead in Elastic/ELK.
+
+Pluses- I have passion for technology and learning.  I am adaptable. I take pride on delivering quality solution 
+
+Currently: Intersys Consulting - working as a Elastic consultant to solve business problem for Federation of State Medical Board.  
+Perform exploratory and feasibility analysis of client’s data and processes and provide technology roadmap and iterative solution architecture with focus on Elastic 5.0 with a goal to improve data quality and operation efficiency.
+
+PoT and PoC - demo capabilities of ES with real data sample.  Propose overall solution, iterative roadmap, work breakdown and estimates.
+
+i) They get PDFs from all states— a manual process to read several pages and categorize (over 250 categories).
+
+ii) Another business problem- matching tens of Millions of records with couple of millions each month/week comparing many fields - noting updates to company database.
+
+IgnitedD2K: Leveraged social data, integrating with structured/unstructured data from many different sources to draw useful insights
+Built data pipeline 
+Participated in backend data architecture and APIs
+Data analysis and modeling- using python, panda, scikit-learn, numpy etc.  
+In spark - DataFrames 
+Used: hadoop/HDFS, AWS S3, spark, nosql technologies. 
+Created data pipelines in spark/kafka calling ML and business logic on the way and landing data on NoSQL/Hbase or Elastic or Dashboard (angular.js)
+
+Prior to that I have been in  Enterprise IT from development & Program management in Bank, Telecom, Healthcare Services etc.
+Education background-Electrical Engineer & Computer Science 
+
+Data Science-
+Analyzing and interpreting data using advanced statistical methods
+Topic modeling using LDA. wordtovec - singular word, doctovec - 
+ML- Ensemble, RF
+
+Kaggle
+
+Q: How to write LRU in scala, db connector
+ML : what is sensitivity, recall?
 
 
 # Strength

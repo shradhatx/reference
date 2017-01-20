@@ -389,9 +389,6 @@ Command line tool  - pdftotext
 Check this site for search input - 
 https://npiregistry.cms.hhs.gov/registry/?
 
-Downloaded files from fsmb at ~/fsmbInfo/FsmbArchive
-
-\NPI- only 1xls file, and a link to NPI updates
 
 You can access the latest monthly NPI file at http://download.cms.gov/nppes/NPI_Files.html
 
@@ -403,9 +400,6 @@ NPPES*September*.zip (581 MB) has-
 	NPPES*Data*.csv    - data file also has first line as header
 	NPPES *Code*Values.pdf
 
-NPPES*Monthly*Deactivation*update*.zip  (1190KB)
-NPPES*Weekly*update*zip (2.4MB)
-
 
 Only one monthly file is available: contains the complete information and fully replaces the old information.
 Weekly file contains the new providers and any updates on existing providers.
@@ -414,7 +408,74 @@ Weekly file contains the new providers and any updates on existing providers.
 ~1.4M physicians
 ~400 fields, sparsely populated
 
+## On mac
 cd ~/Downloads/NPPES_Data_Dissemination_September_2016
+
+Get monthly NPI file NPPES* at http://download.cms.gov/nppes/NPI_Files.html
+As the file is > 4GB (~6GB)
+# install on mac 7z to unzip a large file
+brew install p7zip
+7z x filename.zip
+
+# Elastic version to install 
+elasticsearch-2.3.4
+logstash-2.4.0
+
+tar xzvf fn.tar.gz
+
+alias l='ls -ltr'
+alias es='cd /Users/sbhalla/elasticsearch-2.3.4'
+alias logstash=‘cd /Users/sbhalla/logstash-2.4.0’
+
+export es=localhost:9200
+export index=npiraw
+export indexfull=npifull
+
+alias se='./bin/elasticsearch --cluster.name=estest --node.name=estest_n1'
+alias sl= ‘./bin/logstash -f npiload.conf --configtest’
+
+source ~/.profile
+rm ~/.sincedb*
+
+curl -XDELETE $es/$index?pretty
+curl -XDELETE $es/$indexfull?pretty
+
+./bin/logstash —quiet -f /Users/sbhalla/fsmb/loadnpifull.conf --configtest
+
+logstash -e 'input { stdin { } } output { stdout {} }'
+
+
+rm ~/.sincedb*
+ curl -XDELETE $es/$index?pretty
+
+## useful sites
+
+discuss.elastic.co
+https://www.elastic.co/elasticon
+https://www.elastic.co/support/matrix
+https://www.elastic.co/guide/en/logstash/current/index.html
+
+./bin/logstash -e 'input { stdin { } } output { stdout {} }'
+
+./bin/logstash —quiet -f /Users/sbhalla/fsmb/loadnpi.conf --configtest
+
+curl 'localhost:9200/npiraw/_search?q=*&pretty'
+
+curl -XGET 'http://localhost:9200/logstash-$DATE/_search?pretty&q=license:A12343'
+
+filter {
+csv {
+columns => ["Name","Year"]
+separator => ","
+add_field => {
+      "fullname” => “%{first_name} %{middle_name} %{last_name} %{suffix}”
+    }
+convert => { "column1" => "integer", "column2" => "boolean" }
+remove_field => [ "foo_%{somefield}", "my_extraneous_field" ]
+    }
+}
+}
+
 
 ** To split a large file
 $split  -a 10 -l 5000 - fn*.csv fileprefix
@@ -427,6 +488,61 @@ gunzip -c ../$dump | split -a 10 -l 500 - $index
 
 A site that may be useful to look for matching is -
 https://npiregistry.cms.hhs.gov/registry/?
+
+## NPI on windows
+Windows Server 2008 R2, 64-bit OS, Dual core
+4GB RAM, 8GB Virtual Memory, 40GM hard drive, Only 10GB available
+Note: Its good to play around, good for PoC  with test file but no way for prod or perf benchmark
+Specially if you are doing sorting or aggregating you run out of memory fast
+Ideally machine with 64G of RAM, 32 and 16 are ok but no way 4G
+ES is not CPU intensive, more core is better
+Disk space is used for indexing-heavy need
+SSDs for better performance if you can spend money
+
+
+Install chrome
+Download and install 7-zip
+Download JDK1.8.0_101 from oracle, set path
+Down NPI monthly file.zip
+Download elasticsearch-2.3.4.tar.gz and logstash-2.4.0.tar.gz
+
+“c:\Program Files”\7-zip\7z x elasticsearch-2.3.4.tar.gz 
+
+Note- it is a two step process to extract files
+Same for logstash
+
+“c:\Program Files”\7-Zip/7z x NPPE*.zip
+
+To set environment variables and path
+Start-> search for path  
+set variable JAVA_HOME as c:\Program Files\Java\jdk1.8.0_111
+and append path with c:\”Program Files”\Java\jdk1.8.0_111\bin
+
+Shortcut for going back to home dir
+set usr=%userprofile%
+    cd %usr%
+
+cd elasticsear*
+.\bin\elasticsearch.bat
+
+.\bin\elasticsearch.bat --cluster.name=estest --node.name=estest_n1
+
+.\bin\logstash.bat -f c:\Users\shbhalla\fsmb\npiload.conf --configtest’
+
+October NPI Full file: 
+605,701,856 zip file
+~6GB unzipped
+Total 5,038,808 (~5M records) 
+
+
+In powershell -
+gc npidata*.csv | select -first 5000 > testdata.csv 
+
+gc testdata.csv | select -last 2
+
+gc fn.txt | %{ $_ -replace '\d+', '($0)' } 
+
+Issue: looks like file created using gc is not UTF-8 but hex. Log stash doesn’t like it
 
 
 
