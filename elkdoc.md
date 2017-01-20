@@ -1,6 +1,19 @@
 # Elastic Stack - reference material
-Elasticsearch - distributed, search performant, interface with json, RESTful interface
-> ES advantage: boosting, scoring, relevancy, significant terms, fuzzy matches, geo-distance, aggregation
+Elasticsearch - 
+* distributed, scalable and highly available(no single point of failure)
+* simple yet sophisticated RESTful API
+* Efficient access, Real-time full text search, structured search and analytical capabilities
+* Ability to easily combine Geolocation with search and analytics 
+* Spark ES connector (get or put data in v efficient manner)
+
+Write benchmarks: 250K event writes/sec with a 5 node cluster
+
+> ES advantage over other stores-
+ efficient access
+ advance search capabilities
+ - boosting, scoring, relevancy, significant terms, fuzzy matches, geo-distance, aggregation
+
+
 Lucene uses algorithm HyperLogLog++. Uses only kb of memory for billion distinct terms.
 Check youtube: [Alex Brasetvik](http://found.no/foundation)
 
@@ -161,41 +174,58 @@ minimal upfront effort to put useful and pretty dashboard,
 * [logstashref] - Logstash
 
 
-### Tips
-
-Use of links:
-
-* [node.js] - evented I/O for the backend
-
-Another example [public repository][dill]
- 
-And another way to give links [latest pre-built release](https://github.com/joemccann/dillinger/releases).
-
-References, here is how to use them:
-
-* [plugins/dropbox/README.md] [PlDb]
-
-Here is  _text in italics_ or  `red color text` 
-
-```sh
-shell command here
-```
-
 #### Use of hyperlink
-
-See [my github home page](https://github.com/shradhatx/reference/blob/master/README.md)
-
-**This and more!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
    [elkref]: <https://github.com/shradhatx/reference/elkdoc>
    [sparkref]: <https://github.com/shradhatx/reference/elkdoc>
    [nosqlref]: <https://github.com/shradhatx/reference/nosqldoc>
    [logstashref]: <https://github.com/shradhatx/reference/logstashdoc>
 
-# Monitoring
+# ES Setup & Monitoring
 Marvel, Watcher or GET _cat/health, x-pack
+
+ES Metrics to watch
+
+- current http connections grouped by node and head
+- user cpu on data nodes (as heat map)
+- network in/out by node 
+- jvm heap used by host
+- shards by status
+- jvm garbage collection GC time by node
+- query rates for the cluster
+
+Tips and tricks
+- read the doc
+- read how others use elastic
+- give some planning time to sizing etc.
+- architect with migration in mind
+- monitor from the beginning
+- learn jvm tuning
+- tweak one thing and monitor (check Easton 2016 Quantitative Sizing)
+
+engineering.chartbeat.com/2015/05/26/logstash-deployment-and-scaling-tips/
+
+use kafka for queuing coz 16M events/s - can’t send this much to log stash
+
+# Casestudy - Datadog
+Cluster made of head and data nodes
+~20 nodes, 2 replicas/shard
+Head nodes as load balancer accepting HTTP request
+Data nodes interact with head and data nodes
+Rolling index with one month of event data each, plus 1 future
+Use slow and fast data nodes
+
+Multiple TB log data per day
+150k events/s
+Each stage in data flow adds metadata
+
+
+logs —>log stash —>  index on fast node —> index on slow node (older than 1 day old data)—> s3 (older than 6 day data)  —> dump(using cron job on s3 data)
+
+[Check this for logstash scaling tips](http://engineering.chartbeat.com/2015/05/26/logstash-deployment-and-scaling-tips/)
+
+use kafka for queuing coz 16M events/s - can’t send this much to log stash
+
 
 
 # Migrating to new version
@@ -204,7 +234,90 @@ Rolling restart Vs cluster restart
 
 # Sizing
 
+# Tips for PoC
+For geospatial use case and architecture:  check and excellent talk by esri on geospatial on elastic.co
+(UI example for taking input and showing results —
 
+Where: ID IN (“id1”,”id2”) and field1 > n
+
+Time Window: start time, end time
+
+Geometry: {“min”: -100, “max”: …. ,“spatialReference”: {…}}
+Note: expressed as GeoJSON
+
+Query GET    Query POST
+
+Search returned 4 of 4 in 120 ms
+
+Visualize (see white paper at esri.com/library/whitepapers
+  - check ArcGIS API for java script
+
+## Elastic 5.x
+Elastic stack 5.1.1
+- reindex much faster
+- can cancel long running jobs
+- persistent queues (you may not need kafka)
+- Kibana - tag cloud
+- query profiler - much better to look and find issues
+
+* Geospatial capabilities in 5.0
+
+Check Blueliv  — correlation of event in geo
+
+geo_point, geo_shape, 
+
+ignore_malformed=true   — takes care of parameters
+
+lucene 5 : added numeric capability for upto 2 dimensions now but can be expanded to 8
+BKD Tree - Block KD tree
+
+Binary tree can become unbalanced whereas BKD Tree takes equal time for every leaf.
+
+
+* Elasticsearch and unsupervised ML (anomaly detection - outliers, deviation, rare/different occurrence) with Prelert
+
+Probability-prediction model (more time  I spend to analyze the data better the predictions or confidence is )
+
+Model picked depending on your data - ex periodicity determined - based on moving average — look for harmonics.
+
+Show anomaly as well as hints on the reason of anomaly or influencer (bayseian way of eliminating)
+
+Importance of injecting human intelligence - ex threshold numbers
+
+Prelert is a ES plugin.
+
+ML to solve world huger - ha ha
+
+* Elastic search and Graph 
+       Instead of data ask the relationship between documents 
+          - get answers in terms of graphs and relationships
+
+       Same index in ES new ways to query
+
+* Cognitive computing
+4 cognitive capabilities to interact: vision, speech, data and language.
+
+Programmable system - mathematical system - precise results are rigid based on rules and decisions
+
+Cognitive systems learn and not programmed or rule based but evidence based. 
+
+Human intelligence: observe,interpret & generate hypothesis,evaluate.
+
+Augmented intelligence: augmentation of human expertise- helps to make best decision possible. Ex: Throw lots of information/ and nothing is missed in decision making.
+
+Corpus of knowledge is curated (disregarding dated and useless info) before it can be made useful.
+
+Watson is good at NLP speed & semantics - language - intent - extract logical inferences.
+Watson’s interacts well with speech and natural language, nuances and understands many languages.  It learns from interaction or responses
+
+It scores the hypothesis - (similar to ES)
+Uses statistical modeling for scoring
+
+Comment: technologies are complementary… there is a bit of an overlap…this gives you a way to exploring and may be prevent you from wanting to invest, complication and overhead. This gives you an easy way for exploration and start with a simple solution.
+
+
+
+Relevance - what’s different about this population than the rest of the documents
 
 ### Technical reference
 * [elkref] - all about elastic stack
