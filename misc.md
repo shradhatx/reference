@@ -263,6 +263,10 @@ Multiple full crawl- limitation on SP side.
 
 
 ## Intersys contacts
+melissa Cadwallader
+mcadwallader@intersysconsulting.com
+Phone: 404-514-9563
+
 Rakesh Soni
 Lawren Fendrich
 Becky
@@ -338,17 +342,91 @@ https://www.onthegotours.com/India/Tours/Festival-Tours/Holi--Festival-of-Colour
 
 
 
-### Technical reference
-* [elkref] - all about elastic stack
-* [sparkref] - Spark
-* [nosqlref] - Cassandra, HBase, MongoDB
-* [logstashref] - Logstash
+## To start a windows on mac
 
-   [elkref]: <https://github.com/shradhatx/reference/elkdoc>
-   [sparkref]: <https://github.com/shradhatx/reference/elkdoc>
-   [nosqlref]: <https://github.com/shradhatx/reference/nosqldoc>
-   [logstashref]: <https://github.com/shradhatx/reference/logstashdoc>
+http://www.parallels.com/products/desktop/ 
 
+## ML and ES
+Elasticsearch/Apache lucene uses what is called inverted index.  It is closer to 'more like this' on content or 'bag of words' approach.  'Good value' varies across different domain.  
+Marrying Elasticsearch to NLP to solve the problem is very much possible.  Solution can be extended to use NLP techniques as modeling step.  
+Whatever we use -it is equally important to pay attention to data input and data gathering step to improve accuracy.
+
+NLP algorithms can be applied on data to compare the results from NLP model and compare accuracy.  We need an unbiased labeled data to train the model.
+
+Prelert - executes as kibana app; behavioral analytics ex: anomalies
+reduce false positives
+Prelert Behavioral Analytics for the Elastic Stack helps you automate the analysis of massive Elasticsearch data sets using machine learning technology.
+
+Excellent for anomaly detection. -Proprietary unsupervised machine learning algorithms baseline normal behavior without the need for training data sets. 
+-Sophisticated machine learning algorithms provide you with accurate information (fewer false positives) 
+-Statistical influencers for related anomalies
+
+## FSMB
+Board Orders
+
+./csvtojson.sh ActionCodes.csv
+curl -s -XPUT localhost:9200/_bulk --data-binary @“requests”; echo
+ 
+Kibana 5 examples www.timroes.de
+http://localhost:5601
+check stackoverflow.com   discuss.elastic.co
+
+pdf and jpg stored as base64 format
+Send file contents to es in base64 
+Apache Text Extraction Library Tika use by es for extracting attachment  
+
+Store in es the path to the file; application that will query Elasticsearch know where 
+to look for the file. 
+Look at the attachment plugin that converts the file to text-
+http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/mapping-attachment-type.html
+
+
+PDF to plain text —> Google doc has it
+
+Command line tool  - pdftotext
+
+## NPI
+Check this site for search input - 
+https://npiregistry.cms.hhs.gov/registry/?
+
+Downloaded files from fsmb at ~/fsmbInfo/FsmbArchive
+
+\NPI- only 1xls file, and a link to NPI updates
+
+You can access the latest monthly NPI file at http://download.cms.gov/nppes/NPI_Files.html
+
+cs ~/Downloads/NPPES_Data_Dissemination_September_2016
+NPPES*September*.zip (581 MB) has-
+	NPPES*Data*Readme.pdf
+	npi*Header.csv  - fields in cvs
+	Data
+	NPPES*Data*.csv    - data file also has first line as header
+	NPPES *Code*Values.pdf
+
+NPPES*Monthly*Deactivation*update*.zip  (1190KB)
+NPPES*Weekly*update*zip (2.4MB)
+
+
+Only one monthly file is available: contains the complete information and fully replaces the old information.
+Weekly file contains the new providers and any updates on existing providers.
+
+
+~1.4M physicians
+~400 fields, sparsely populated
+
+cd ~/Downloads/NPPES_Data_Dissemination_September_2016
+
+** To split a large file
+$split  -a 10 -l 5000 - fn*.csv fileprefix
+$split  -b 1000m  fn*.csv fileprefix
+
+
+** to split a gz file, input file name in env dump and output filename in index
+gunzip -c ../$dump | split -a 10 -l 500 - $index
+
+
+A site that may be useful to look for matching is -
+https://npiregistry.cms.hhs.gov/registry/?
 
 
 

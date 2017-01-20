@@ -1,6 +1,11 @@
 # reference
 Reference material to review before any job inteview
 
+# Introduction
+
+
+
+
 # Strength
 - motivated to do the best & deliver high quality solu, I am adaptable, result driven- Always in
 touch with the business goals while deep diving in technology- problem solving skills.

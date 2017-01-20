@@ -273,6 +273,59 @@ BKD Tree - Block KD tree
 
 Binary tree can become unbalanced whereas BKD Tree takes equal time for every leaf.
 
+* ES 5.0 webinar
+ES 5.0 webinar
+scripting language called ‘painless’
+shrink api for merging shards
+wait for refresh
+ingest node
+profile aggregation
+percolation is now a query (percolator is out)
+
+kibana-  5.0
+
+sense- best to build free form query and run against es
+sense is called console now
+Console and Timeline are shipped with kibana core
+
+Log stash - uses java so more flexible in enriching data
+Beats - low footprint shipper
+
+Ingest node- do parsing of incoming data, in es, received from for ex Beats
+
+Use beats processor at Beat level to drop off ex 200 ok messages
+
+New in 5.0 
+  - kafka output from Beats
+  - Metricbeat
+
+ - monitoring of logstash ex: how much time spent in each filter etc., hot threads, granular logging for individual level component, change log level with log stash running
+
+Logstash - Support for amazon kinesis input; dissect filter(features that grok provides);   
+
+Check youtube Elasticsearch by Honza Kral
+
+Useful links on ingest pipeline-
+
+https://discuss.elastic.co/t/implementing-ingest-attachment-processor-plugin/52300
+
+https://www.elastic.co/guide/en/elasticsearch/plugins/master/ingest-attachment.html5 
+
+https://www.elastic.co/guide/en/elasticsearch/plugins/master/ingest-attachment.html
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
+
+ https://speakerdeck.com/elastic/ingest-node-re-indexer-et-enrichir-des-documents-dans-elasticsearch-softshake-2016
+
+Example of pipeline with attachment
+ https://discuss.elastic.co/t/about-the-elasticsearch-category/21/1
+
+Elastic search plugins
+https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html
+
+
+
+
 
 * Elasticsearch and unsupervised ML (anomaly detection - outliers, deviation, rare/different occurrence) with Prelert
 
