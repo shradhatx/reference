@@ -267,11 +267,11 @@ melissa Cadwallader
 mcadwallader@intersysconsulting.com
 Phone: 404-514-9563
 
+Angie Shepard 512.585.9190
 Rakesh Soni
 Lawren Fendrich
 Becky
 Roger Wahman
-Shradha
 
 Elastic:
 Joe Quick
@@ -282,6 +282,16 @@ GM:
 Eric
 *Denis 
 Srini
+
+## FSMB Contacts
+Cyndi Streun, SVP Information Systems
+Jill Putman, Enterprise Data Manager  Phone:  817-868-5129
+Christine Wells, Agile Project Manager
+Aaron Young, PhD, Assistant VP, Research & Data Integration
+
+Cyndi Streun (FSMB) <CStreun@fsmb.org>
+Aaron Young <ayoung@fsmb.org>
+Cheryl Rojo <crojo@fsmb.org>
 
 
 
@@ -362,7 +372,48 @@ Excellent for anomaly detection. -Proprietary unsupervised machine learning al
 -Statistical influencers for related anomalies
 
 ## FSMB
+Intro
+
+I have been working hands on in Big Data for last about 4 years now. Had end to end solution architecting and development experience using leading edge hadoop, spark, nosql technologies. Created data pipelines in spark/kafka calling ML and business logic on the way and landing data on NoSQL/Hbase or Elastic or Dashboard (angular.js)
+
+Prior to that I have been in  Enterprise IT from development & Program management in Bank, Telecom, Healthcare Services etc.
+Education background-Electrical Engineer & Computer Science 
+
+Data Science-
+Analyzing and interpreting data using advanced statistical methods
+Topic modeling using LDA. wordtovec - singular word, doctovec - 
+ML- Ensemble, RF
+
+Experience:
+Perform exploratory and feasibility analysis for Federation of State Medical Boards (FSMB) data & processes and provide technology roadmap to exploit Elastic Stack for flexible search and matching capabilities with a goal to improve data quality and enhance automation.
+
+Technology used for PoC: 
+Elastic Stack 5.0 
+Elastcisearch 5.0: ingest pipeline to pre-process PDFs, extract text content, index the data with meta data.
+Kibana 5.0: Analyse and view data.  Complex query DSLs for searching in Kibana.
+Use of percolator with pdf content for matching.  
+Logstash for bulk loading and preprocessing files into Elastic indexes.  
+Automated scripts to kickoff loading, pre-processing, matching and spewing results.
+
 Board Orders
+Problem Statement: Compare incoming PDF documents with a list of some 250 standard text description and find the top 3 best match.
+We provided technical solution and demo using Elasticsearch ingest pipeline for pdf transformation to text and percolator query to match over 250+ description(or topics).  We sent pdf documents through the pipeline that returns the top 3 topics for each document to the client to review.  The client came back saying the results returned is not what they have come up manually.  At this time we do not have enough data to determine the accuracy.  There may be a room to fine tune the percolate query once we collect more result.
+
+Big data is useless without human intelligence
+Machine Learning requires huge data for any kind of predication algorithms.
+Data driven predictions, issues-
+     Bias in data
+Data rarely come packaged in a form that is useful for making predictions about the outcomes you care about.
+
+Elasticsearch uses what is called inverted index - tf/idf .  It is closer to 'more like this' on content or 'bag of words' approach.  'Good value' varies across different domain.  
+Marrying Elasticsearch to NLP to solve the problem is very much possible.  Solution can be extended to use NLP techniques as modeling step.  
+Whatever we use it is equally important to pay attention to data input and data gathering step to improve accuracy.
+
+
+What may be helpful is if one of you can articulate the algorithms Elasticsearch inherently provides, its pros, cons and tradeoffs.
+What are the other NLP algorithms you recommend that is likely to improve accuracy?  Describe the data needed to train the model.
+
+
 
 ./csvtojson.sh ActionCodes.csv
 curl -s -XPUT localhost:9200/_bulk --data-binary @“requests”; echo
@@ -386,6 +437,7 @@ PDF to plain text —> Google doc has it
 Command line tool  - pdftotext
 
 ## NPI
+
 Check this site for search input - 
 https://npiregistry.cms.hhs.gov/registry/?
 
@@ -547,4 +599,39 @@ Issue: looks like file created using gc is not UTF-8 but hex. Log stash doesn’
 
 
 
+HSA account
+https://www.discoverybenefits.com/
+shrad..@gmail.com/236…SB
+
+
+
+
+Intersys time management:
+ 
+·         URL: https://www.openair.com/index.pl?account_nickname=Intersys%20Consulting;r=pb9Qmb46365
+·         Company ID: Intersys Consulting (case-sensitive)
+·         User ID: sbhalla (all lower case, case-sensitive)
+
+Why Linux over Microsoft?
+
+Linux is better than microsoft
+   - curl in windows even powershell is a nightmare; can use cygwin
+   - no ssh - have to download putty
+   - sick of OS telling how to use it and getting in the way.
+
+Issues
+
+- micro-manage:  way to communicate is very disrespectful; treat as if we are elementary kids
+- too critical.  Ex: the text; template input; how to talk in client meeting: ‘do not say OK’;
+- too restrictive on how the tasks to be performed - ex: parallel solution trial for vpn connectivity in mac and windows
+- uncomfortable - treating of sort.  ‘you were told earlier how you irritated client earlier. Don’t want SoW to be mentioned…’
+       Something that was said as a suggestion is quoted as reprimand…	
+	In fact the client referred to us collectively that she mentioned working on their server. We brought up the vpn issue and wanted to confirm the importance of working on their server.
+
+-
+
+
+
+Must exercise common courtesy and manner
+Must act with a common sense and purpose and extend our utmost consideration and appreciation.
 

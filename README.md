@@ -67,6 +67,18 @@ Now value pragmatism over perfection.
 > Q: what are the skills/qualities that you desire in the person you hire?
 > Q: what are the imminent challenges in the project/team?
 
+* Requirements
+Understand requirements - performance, security, access, archival, access patterns, consistency, availability, tolerance for downtime for upgrade if updating existing system etc.
+
+Understand tradeoffs on solutions presented. Tradeoffs on CAP are real and these are business decisions not engineering.
+
+
+Infrastructure: Evolve: on-premise/virtual/hybrid
+Datastore: Keep it simple, understand flexibility CAP- pros for your use-case
+Application: synchronous or Asynchronous
+
+
+
 ### Technical reference
 * [elkref] - all about elastic stack
 * [sparkref] - Spark
