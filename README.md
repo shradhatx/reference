@@ -1,4 +1,4 @@
-#### Introduction
+### Introduction
 My name is Shradha Bhalla, I am an IT professional leveraging  my 20+ years of experience in innovating, developing, and deploying technology solutions to help clients create products and solve business problems. Specializing in hands-on architecture, proofs of concept, and development of open source, big data systems using trending hadoop and spark technologies. 
 
 I have varied experience in Enterprise IT - managed high performance teams bad high risk projects in software dev, infrastructure upgrade, tech refresh etc.
@@ -9,17 +9,19 @@ Education background- EE and Masters in CS
 Goal - technical consulting role as big data solution architect leveraging open source technologies and virtual/hybrid/server-less infrastructure.    Or a senior developer/lead in Elastic/ELK.
 
 
-#### Intersys Consulting - 
-* Elastic consultant to solve business problem for Federation of State Medical Board.  
+#### Intersys Consulting 
+* Elastic consultant on Federation of State Medical Board projects.  
 Perform exploratory and feasibility analysis of client’s data and processes and provide technology roadmap and iterative solution architecture with focus on Elastic 5.x with a goal to improve data quality and operation efficiency.
 
-PoT and PoC - demo capabilities of ES with real data sample.  Propose overall solution, iterative roadmap, work breakdown and estimates.
+PoT and PoC - demo capabilities of ES with FSMB data sample.  Propose overall solution, iterative roadmap, work breakdown and estimates. Two of teh projects I worked on at FSMB-
 
-i) They get PDFs from all states— a manual process to read several pages and categorize (over 250 categories).
 
-ii) Another business problem- matching tens of Millions of records with couple of millions each month/week comparing many fields - noting updates to company database.
+i) FSMB gets board orders in PDF from different States. These are reviewed manually and categorize choosing from over 250 categories. FSMB wants to learn about automating the process utilizing text search, NLP and categorization. They have Elastic stack and wanted to explore the capabilities in Elasticserach first.    
 
-* Elastic consultant on IMF project to propose an intranet search solution and demo PoC that replaces Microsoft FAST leveraging Elasticsearch that works seamlessly with Sharepoint and company websites and AD. 
+ii) FSMB maintains a database of ~1.4M on Physicians. Certains updates on physicians are available monthly from another source in a csv file with over 300 fields and ~ 6M records.  There is no common identifier.  FSMB wanted a solution to efficiently match these Millions of records with FSMB database first comparing many fields to correctly identify the physician and then noting changes and updating FSMB record.
+
+
+* Elastic consultant on IMF project to propose an intranet search solution and demo PoC that replaces Microsoft FAST leveraging Elasticsearch that works seamlessly with Sharepoint, company websites and AD. 
 
 #### IgnitedD2K:  Build a product that leverages social data, integrating with structured/unstructured data from many different sources to draw useful insights for a business group.
 * Built end-to-end data pipeline 
@@ -29,7 +31,7 @@ ii) Another business problem- matching tens of Millions of records with couple o
 Used Hadoop/HDFS, AWS EC2, S3, Spark, Nosql technologies. 
 Created data pipelines in spark/kafka calling ML and business logic on the way and landing data on NoSQL/Hbase or Elastic or Dashboard (angular.js)
 
-Certfication in Data Science from coursera-
+usingCertfication in Data Science from coursera-
 Analyzing and interpreting data using advanced statistical methods
 Topic modeling using LDA. wordtovec - singular word, doctovec  
 ML- Ensemble, RF
