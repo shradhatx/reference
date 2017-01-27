@@ -25,7 +25,7 @@ ii) Another business problem- matching tens of Millions of records with couple o
 
 * Elastic consultant on IMF project to propose an intranet search solution and demo PoC that replaces Microsoft FAST leveraging Elasticsearch that works seamlessly with Sharepoint and company websites and AD. 
 
-# IgnitedD2K:  Build a product that leveragers social data, integrating with structured/unstructured data from many different sources to draw useful insights for a business group.
+#### IgnitedD2K:  Build a product that leveragers social data, integrating with structured/unstructured data from many different sources to draw useful insights for a business group.
 * Built end-to-end data pipeline 
 * Participated in backend data architecture and APIs
 * Data analysis and modeling- using python, panda, scikit-learn, numpy etc.  
@@ -39,19 +39,19 @@ Topic modeling using LDA. wordtovec - singular word, doctovec
 ML- Ensemble, RF
 Kaggle
 
-# Worked as Program Manager/ Technical PM on several projects of many flavors in Bank, Telecom, Healthcare Services etc.
+#### Worked as Program Manager/ Technical PM on several projects of many flavors in Bank, Telecom, Healthcare Services etc.
 
-# Worked in roles such as C/Java/Database preorammer, team lead and Dev Mgr.
+#### Worked in roles such as C/Java/Database preorammer, team lead and Dev Mgr.
 
-# Education background-Electrical Engineer & Computer Science 
+#### Education background-Electrical Engineer & Computer Science 
 
 
-# Questions
+#### Questions
 Q: How to write LRU in scala, db connector
 ML : what is sensitivity, recall?
 
 
-# Strength
+#### Strength
 - motivated to do the best & deliver high quality solu, I am adaptable, result driven- Always in
 touch with the business goals while deep diving in technology- problem solving skills.
 - Have emotional maturity.
@@ -59,11 +59,11 @@ touch with the business goals while deep diving in technology- problem solving s
 team.
 - There are so many technologies and alternate ways to do things. I am always open to listen and accomodate without ego. 
 
-# Weakness
+#### Weakness
 I had as PM - challenge to say no to work request -inundated with continuously changing demands. Learned the importance to prioritize intake - team or people work best when targets are achievable - challenging but possible.
 Now value pragmatism over perfection.
 
-# Questions to ask interviewer
+#### Questions to ask interviewer
 
 > Q: is there anything i can tell you about me that would help you make a hiring decision?
 > Q : tell me about your process of customer engagement and solution implementation & delivery strategy.
@@ -86,13 +86,13 @@ Application: synchronous or Asynchronous
 
 
 
-### Technical reference
+#### Technical reference
 * [elkref] - all about elastic stack
 * [sparkref] - Spark
 * [nosqlref] - Cassandra, HBase, MongoDB
 
 
-### Tips
+#### Tips
 
 Use of links:
 
