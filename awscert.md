@@ -765,44 +765,44 @@ vi /var/www/html/connect.php and add the RDS endpoint from launched RDS) Allow W
 Go to RDSSecurity group, change the inbound rule- allows MySQLAurora to SGWeb
 Go to url (the one displayed when RDS is alive)
 Lab-
-Create a snapshot of RDS-
+* Create a snapshot of RDS-
 ￼Point in time recovery - restore to point in time.
 Restore DB instance- here you can upgrade EC2 instance it is restored to, or to a encrypted DB or multi AZ (for automatic failover to standby during maintenance or DR). Migrate a snapshot- ex from MySQL to Aurora.
 Create read replica, read replica of read replica and scale.
 For performance create read replicas or caching. Read replica cannot have multi-AZ. Read replicas have their own endpoint. Can be promoted to its own db.
 You can select different EC2 instance type, different region etc. Limited to 5 read replica. Can scale up with bigger instance but cannot scale out.
-DynamoDB-
+* DynamoDB-
 create instance
 create table, give name (acloudguru) and pk (studentId), read capacity: 1, write capacity: 1
 Add items to table. Append fields- add FirstName and give value
 Check filter in overview; See metrics; change capacity on the fly.
 No downtime when scaling.
-****Lab: Create Custom VPC -Under Networking- do not use wizard instead create your own(see side menu) Note: you can have 3 VPCs for dev, test and prod. Dev or test VPC can communicate with prod via peering using private IP address if they want to talk.
--give name(SBTest-VPC), CIDR block(10.0.0.0/16), Tenancy:Default (Hit create) -Click on Route table(side menu)- see that a record is created automatically.
--Click on Subnet(side menu) - Create 3 Subnets SB-Subnet1,2,3; Give Name, Select SBTest-VPC, select AZ; CIDR: 10.0.1.0/24 and 10.0.2.0/24 and 10.0.3.0/24 (available IPs 251)
-￼-Click on Internet Gateway (side menu); give a name: SB-IGW Hit create
+## Lab: Create Custom VPC -Under Networking- do not use wizard instead create your own(see side menu) Note: you can have 3 VPCs for dev, test and prod. Dev or test VPC can communicate with prod via peering using private IP address if they want to talk.
+* give name(SBTest-VPC), CIDR block(10.0.0.0/16), Tenancy:Default (Hit create) -Click on Route table(side menu)- see that a record is created automatically.
+* Click on Subnet(side menu) - Create 3 Subnets SB-Subnet1,2,3; Give Name, Select SBTest-VPC, select AZ; CIDR: 10.0.1.0/24 and 10.0.2.0/24 and 10.0.3.0/24 (available IPs 251)
+*￼Click on Internet Gateway (side menu); give a name: SB-IGW Hit create
 By default g/w is detached. You attach it to your VPC
--Click on Route table(side menu) - create another route table SB-RouteT under SBTest- VPC (other than one created by default). Select record that is created and go to tab Routes (see below)- Edit (add a row) , under Target - choose our g/w, in destination give 0.0.0.0/0 (i.e allow all traffic)- Hit Save
+* Click on Route table(side menu) - create another route table SB-RouteT under SBTest- VPC (other than one created by default). Select record that is created and go to tab Routes (see below)- Edit (add a row) , under Target - choose our g/w, in destination give 0.0.0.0/0 (i.e allow all traffic)- Hit Save
 Click Association tab- select the subnet 10.0.1.0 as the one to have internet access Now EC2 instance in this subnet will have internet access.
-- Click Subnets(side menu) - see subnets
--Launch EC2, select our VPC, and SB-Subnet1, Auto assign IP address: Enable, click Next, Next (call SBWebS) under security group allow SSH and HTTP and Launch. Create a new keypair SBWebKP and download. Cut and paste in your keyboard.
-- Launch another EC2 - for SBDbS, put this in 10.0.2.0 (the one that does not have
+* Click Subnets(side menu) - see subnets
+* Launch EC2, select our VPC, and SB-Subnet1, Auto assign IP address: Enable, click Next, Next (call SBWebS) under security group allow SSH and HTTP and Launch. Create a new keypair SBWebKP and download. Cut and paste in your keyboard.
+* Launch another EC2 - for SBDbS, put this in 10.0.2.0 (the one that does not have
 internet access), SBDbKP key-pair downloaded
-- Test doing ssh to the two EC2 instances, the first one SBWebS has the public IP
-address and can be accessed. The second one SBDbS doesn’t have public IP address it only has private IP address i.e. it doesn’t have internet access. You can ssh from SBWebS to SBDbS using private IP but #yum update -y fails. You give access to internet using NAT instance.
--Click Security Group, name: SBNatSG, give our VPC; see tabs below - under ‘inbound ‘add two rules type:HTTP and HTTPS Source: give 10.0.2.0/24 (where DB server sits in) for both
+* Test doing ssh to the two EC2 instances, the first one SBWebS has the public IP
+address and can be accessed. The second one SBDbS doesn’t have public IP address it only has private IP address i.e. it doesn’t have internet access. You can ssh from SBWebS to SBDbS using private IP but yum update -y fails. You give access to internet using NAT instance.
+* Click Security Group, name: SBNatSG, give our VPC; see tabs below - under ‘inbound ‘add two rules type:HTTP and HTTPS Source: give 10.0.2.0/24 (where DB server sits in) for both
 under ‘outbound ‘add two rules type:HTTP and HTTPS Source: give 0.0.0.0/0 (for both -Click on EC2, Choose an AMI, Community AMI search for nat* select gp2
 (to improve network throughput select larger nat) network: SBTestVPC, subnet: 10.0.1.0
 auto-assign public ip:Disable (since we assign it manually) we need public Ip or ELB
 ￼Next, use SBNatSG - Hit Launch
--Click on Elastic IPs (side menu under Network & Security), click Allocate new address, associate the allocated IP to our NAT instance Action->Associate Address
--Click on EC2 dashboard, select NAT instance running, click on Action->Networking- >source/destination check : Disable (by default it is enabled)
--Go to VPC Dashboard- create a new route- click Route Table- select default Route Table (row that is created by default) & click Routes tab(down below) - add a row Destination: 0.0.0.0/0, Target: my NAT VM Hit Save
+* Click on Elastic IPs (side menu under Network & Security), click Allocate new address, associate the allocated IP to our NAT instance Action->Associate Address
+* Click on EC2 dashboard, select NAT instance running, click on Action->Networking- >source/destination check : Disable (by default it is enabled)
+* Go to VPC Dashboard- create a new route- click Route Table- select default Route Table (row that is created by default) & click Routes tab(down below) - add a row Destination: 0.0.0.0/0, Target: my NAT VM Hit Save
 Open terminal window - yum update -y
 yum install mysql
 see you have internet access even though it inside a private subnet (cannot ssh into it directly)
-——-
-Instance security groups
+
+## Instance security groups
 Steps
 1. create custom VPC
 1 VPC - multiple subnets, 1 g/w per VPC
@@ -810,7 +810,7 @@ For g/w to communicate to EC2s create route table and configure inbound and outb
 2. Create EC2
 Web server on subnet accessible to all EBS on subnet not accessible to all
 ￼Two subnets - 1 public facing ex web server, 1 internal facing ex EBS
-+++ Tuning
+## Tuning
 S3: Turn off versioning on if not needed, set TTL. CloudFront- TTL on edge location
 RDS: configure replication closely
 Read replicas for heavy read
@@ -826,4 +826,70 @@ C. Create an Identity and Access Management (IAM) User for CloudFront and grant 
 objects in your S3 bucket to that IAM User.
 D. Create a S3 bucket policy that lists the CloudFront distribution ID as the Principal and the target
 bucket as the Amazon Resource Name (ARN).
-￼
+
+## Kinesis
+
+ Ingest, transform, load, react, perists
+* Kinesis Stream - custom application, flexibility
+
+* Kinesis Firehose - if you want to send raw data to s3/redshift/elasticsearch
+  configure - scale, encrypt, store destination
+  Durable, scalable ingest - checkpoint as data is processed
+  input- json, csv, unstructured text, variable column (not avro, xml yet)
+  infers schema with flexibility to change
+  reference data source - read at periodic interval and pull in memory and do enrichment 
+  in-application stream looks very much like a table and SQL can be applied to oit
+
+* Kinesis Analytics
+Reads inapplication streams and processes using SQL-filter, mathematical, anolmaly detection, approximate distinct item HyperLogLog
+Standard SQL for analysis - very familiar language to analyze data
+Real time insights or responsive analysis in sub secs works off of streams
+Perishable insights in real time - comparable insights Ex: this week Vs last week
+Dynamically scales
+Data Scientist: Neena Mishra see her website for anomaly detection algorithm
+
+Usecases-
+Collect large PB of data, provide data to various business organization for product development.
+Time series analysis - computing 5 min average over particular column.
+Calculate percentage of errors on all api calls.
+
+Company usecase Hearst corporation
+Steps-
+create data pipeline - collect data from all the sources
+create tag management
+
+* Visualization - an important part of analytics
+ES - Kibana
+Redshift - AWS QuickSight
+RDS - Tableau
+
+* Create real time alarm and notification on individual event or analytic value
+Cloudwatch
+SNS
+
+Each row has ROWTIME
+
+Sliding window(continuously overlapping), tumbling window(window do not overlap), custom window(start or stop window at particular event occurance)
+
+
+Pricing:
+KPU 1 vCPU and 4GB memory
+KPU hour $0.11
+
+Ex: 1MB/s stream ~$80/month
+Aggregations using 1 min window for 5MB/s stream is ~$150/month
+
+> Usecase: Realtor.com
+Customer problem:  Relevant search result
+Handles extreme thruput and available 24x7
+
+
+
+
+
+
+
+
+
+
+
