@@ -1,6 +1,3 @@
-# Reference
-Reference material to review before any job inteview
-
 #### Introduction
 My name is Shradha Bhalla, I am an IT professional leveraging  my 20+ years of experience in innovating, developing, and deploying technology solutions to help clients create products and solve business problems. Specializing in hands-on architecture, proofs of concept, and development of open source, big data systems using trending hadoop and spark technologies. 
 
