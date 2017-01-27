@@ -25,7 +25,7 @@ ii) Another business problem- matching tens of Millions of records with couple o
 
 * Elastic consultant on IMF project to propose an intranet search solution and demo PoC that replaces Microsoft FAST leveraging Elasticsearch that works seamlessly with Sharepoint and company websites and AD. 
 
-#### IgnitedD2K:  Build a product that leveragers social data, integrating with structured/unstructured data from many different sources to draw useful insights for a business group.
+#### IgnitedD2K:  Build a product that leverages social data, integrating with structured/unstructured data from many different sources to draw useful insights for a business group.
 * Built end-to-end data pipeline 
 * Participated in backend data architecture and APIs
 * Data analysis and modeling- using python, panda, scikit-learn, numpy etc.  
