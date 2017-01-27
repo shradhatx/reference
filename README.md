@@ -1,7 +1,7 @@
-# reference
+# Reference
 Reference material to review before any job inteview
 
-# Introduction
+#### Introduction
 My name is Shradha Bhalla, I am an IT professional leveraging  my 20+ years of experience in innovating, developing, and deploying technology solutions to help clients create products and solve business problems. Specializing in hands-on architecture, proofs of concept, and development of open source, big data systems using trending hadoop and spark technologies. 
 
 I have varied experience in Enterprise IT - managed high performance teams bad high risk projects in software dev, infrastructure upgrade, tech refresh etc.
@@ -13,7 +13,7 @@ Goal - technical consulting role as big data solution architect leveraging open 
 
 Pluses- I have passion for technology and learning.  I am adaptable. I take pride on delivering quality solution. 
 
-# Currently: Intersys Consulting - 
+#### Intersys Consulting - 
 * Elastic consultant to solve business problem for Federation of State Medical Board.  
 Perform exploratory and feasibility analysis of client’s data and processes and provide technology roadmap and iterative solution architecture with focus on Elastic 5.x with a goal to improve data quality and operation efficiency.
 
