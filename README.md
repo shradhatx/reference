@@ -8,7 +8,6 @@ Education background- EE and Masters in CS
 
 Goal - technical consulting role as big data solution architect leveraging open source technologies and virtual/hybrid/server-less infrastructure.    Or a senior developer/lead in Elastic/ELK.
 
-Pluses- I have passion for technology and learning.  I am adaptable. I take pride on delivering quality solution. 
 
 #### Intersys Consulting - 
 * Elastic consultant to solve business problem for Federation of State Medical Board.  
@@ -49,12 +48,12 @@ ML : what is sensitivity, recall?
 
 
 #### Strength
-- motivated to do the best & deliver high quality solu, I am adaptable, result driven- Always in
+- Motivated to do the best & deliver high quality solu, I am adaptable, result driven- Always in
 touch with the business goals while deep diving in technology- problem solving skills.
 - Have emotional maturity.
-- Can accomplish your strategic/tactical goals. I can lead and build a high performing technical
-team.
-- There are so many technologies and alternate ways to do things. I am always open to listen and accomodate without ego. 
+- Can accomplish your strategic/tactical goals. I can lead and build a high performing technical team.
+- There are so many technologies and alternate ways to do things. I am adaptable.
+- I have passion for technology and learning. 
 
 #### Weakness
 I had as PM - challenge to say no to work request -inundated with continuously changing demands. Learned the importance to prioritize intake - team or people work best when targets are achievable - challenging but possible.
