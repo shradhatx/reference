@@ -36,7 +36,8 @@ AWS shared responsibility model
 * Recovery time objective
 * Recovery point objective
 * Validation of data recovery method
-* Elastic Load Balancer • Amazon Route53
+* Elastic Load Balancer 
+* Amazon Route53
 
 ## Troubleshooting
 https://www.udemy.com/aws-certified-solutions-architect-associate/learn/v4/t/lecture
@@ -56,22 +57,23 @@ Re-Invent is a yearly conference by AWS IaaS
 * Edge location- CDN(content distribution Network) end point for cloud front
 
 ## Network-
-VPC- virtual private cloud - a data center - you can have many in your AWS account(5 by default)
-Direct Connect - a way to connect without using internet connection /fiber Route53- DNS service- 53 is the port DNS sits on
+* VPC- virtual private cloud - a data center - you can have many in your AWS account(max 5 by default)
+* Direct Connect - a way to connect without using internet connection /fiber 
+* Route53- DNS service- 53 is the port DNS sits on
 
 ## Compute-
-EC2 - virtual server
-EC2 container Service or ECS - EC2 with docker
-Elastic beanstalk - for deploying web application (in node.js, php, python, rails or java)
-Ex: provides 2 node modules Express (web app framework) and Jade (for html) Bootstrap - a mobile-first front-end framework document)
-Lambda- most powerful AWS service. Lets you run code without provisioning service. Cost effective.
-Concepts & Components
+* EC2 - virtual server
 EC2 are assigned 2 IP address at launch - public and private
+* EC2 container Service or ECS - EC2 with docker
+* Elastic beanstalk - for deploying web application (in node.js, php, python, rails or java)
+Ex: provides 2 node modules Express (web app framework) and Jade (for html) Bootstrap - a mobile-first front-end framework document)
+* Lambda- Lets you run code without provisioning service. Cost effective.
+Concepts & Components
 
 ## Concept and components
-IAM
+IAM Identity Access Management
 Directory services
-Cloud Formation - for creating VPC Cloud Watch -
+Cloud Formation - for creating VPC Cloud Watch 
 Cloud Trail - audit trail Opsworks -
 Config - management tools Service Catalog
 Trusted Advisor - automated service that tells you the way to save money etc. API Gateway -
@@ -82,7 +84,8 @@ SQS - Queues, decoupling
 SWF - simple work flow
 CodeCommit - like github
 CodeDeploy -
-CodePipeline - continuous delivery service - deploys as code is changed MobileHub-monitor mobile apps
+CodePipeline - continuous delivery service - deploys as code is changed 
+MobileHub-monitor mobile apps
 Cognito - app preferences for game
 Device Farm -
 Mobile Analytics - track app usage etc.
@@ -92,74 +95,71 @@ WorkMail - like exchange
 IoT
 
 ## Storage-
-S3 - object based, hold flat files in cloud. You pay for storage that you use. Immediately available after write for PUTS. But eventual consistency for overwrite puts and deletes.
-up to 1Byte - 5TB
-S3-IA (infrequently accessed)
+* S3 - object based, hold flat files in cloud. You pay for storage that you use. Immediately available after write for PUTS. But eventual consistency for overwrite puts and deletes.  up to 1Byte - 5TB. 
 S3 is key value store + version ID; object based storage.
 MFA (multi factor authentication) delete on S3.
+* S3-IA (infrequently accessed)
 Can transition from S3 to S3-IA if >128KB and 30 days old.
-Also add TTL
-Cloud front - edge locations (for cached files). You can write your files there.
-Glacier - for long term backup (takes 4 hours if you need to access it but is cheapest storage.
-EFS - elastic file system - block level storage— think of it as NAS on cloud - centralized storage - can connect to multiple EC2
-Snowball - import/export services - send hard disk into AWS - move petabyte scale of data to AWS.
+Can also add TTL
+* Cloud front - edge locations (for cached files). You can also write your files there.
+CloudFront- CDN content distribution network or a collection of edge location
+Edge location-where content is cached (different than Availability Zone); content cached till TTL. 
+Origin - where the content is
+User request routed to the nearest Edge location to see if it is cached there; if not found it requests from CDN
+Web Distribution - typically used for web sites
+RTMP - for media streaming
+* Glacier - for long term backup (takes 4 hours if you need to access it but is cheapest storage.
+* EFS - elastic file system - block level storage— think of it as NAS on cloud - centralized storage - can connect to multiple EC2
+* Snowball - import/export services - send hard disk into AWS - move petabyte scale of data to AWS.
 Storage gateway - connecting on-premise to cloudbase - for replication using VM
 Pricing -
 S3: $0.03 per GB up to 1TB/month
 
 ## Databases-
-RDS- relational database services
-Dynamo DB - NoSQL -non relational db Elasticache - caching db query result on cloud Redshift - DW service
+* RDS- relational database services
+* Dynamo DB - NoSQL -non relational db Elasticache - caching db query results on cloud 
+* Redshift - DW service
 DMS- DB Migration Service ex: oracle to MySQL
 
 ## Analytics-
-Elastic Map Reduce (EMR)
-TBD: Check Data pipeline
-Elastic Search
-Kinesis - streaming data into AWS ML
-TBD: Check Quick Sight - BI service like Cognos.
+* Elastic Map Reduce (EMR)
+* Elastic Search
+* Kinesis - streaming or Firehose data into S3, Redshift or ES 
+* Quick Sight - BI service like Cognos.
 
-## Security and Identity-
-IAM- Identity Access Management, identity federation with fb, AD etc.
-CloudFront-
-CDN content distribution network or a collection of edge location
-Edge location-where content is cached (different than Availability Zone); content cached till TTL. Can be used for write also.
-Origin - where the content is
-User request routed to the nearest Edge location to see if it is cached there; if not found it requests from CDN
-Web Distribution - typically used for web sites
-RTMP - for media streaming
-
-## Security and Encryption-
-Secure buckets using bucket policy and ACL
-Policy is a document that provide a formal statement of one or more permissions. Encryption: In Transit (SSL/TLS)
-At Rest
-Server side encryption:
-S3 managed key SSE-S3 AS-256,
-AWS Key Management Service SSE-KMS envelop key provides added advantage, audit trail
-Customer provided key SSE-C Client side encryption SSL
+## Security 
+* IAM- Identity Access Management, identity federation with fb, AD etc.
+* Secure buckets using bucket policy and ACL
+Policy is a document that provide a formal statement of one or more permissions. 
+* Encryption In Transit: SSL/TLS
+* Encryption At Rest: Server side encryption
+S3 managed key: SSE-S3 AS-256
+AWS Key Management Service:  SSE-KMS envelop key provides added advantage of audit trail
+Customer provided key: SSE-C Client side encryption SSL
 
 ## AWS Storage Gateway-
-On premise storage via Storage g/w on VMWare ESXi can be seamlessly connected to storage on AWS. (Download virtual image of AWS storage gateway on your data center
-and activate with your AWS account)
-G/W stored volumes: Entire data onsite and asynchronously backed up on S3
-￼G/W Cached Volumes: only most frequently used data is stored locally so you don’t need SAN arrays. Cons: if internet connectivity is down you cannot access all data
-G/W Virtual Tape Library (VTL): virtual tape on AWS accessed by iSCSI interface. Supported by NetBackup
+* On premise storage via Storage g/w on VMWare ESXi can be seamlessly connected to storage on AWS. (Download virtual image of AWS storage gateway on your data center and activate with your AWS account)
+* G/W stored volumes: Entire data onsite and asynchronously backed up on S3
+*￼G/W Cached Volumes: only most frequently used data is stored locally so you don’t need SAN arrays. Cons: if internet connectivity is down you cannot access all data
+* G/W Virtual Tape Library (VTL): virtual tape on AWS accessed by iSCSI interface. Supported by NetBackup
 
 ## Import/Export
-Import/Export Disk: to move large amount of data on/off AWS; bypasses internet and uses amazon’s high speed direct internal connection. Import to EBS, S3, Glacier. Export to S3
+* Import/Export Disk: to move large amount of data on/off AWS; bypasses internet and uses amazon’s high speed direct internal connection. Import to EBS, S3, Glacier. Export to S3
 T1(1.544 Mbps), T3(44.736 Mbps), 10/100/1000Mbps
-Import/Export Snowball: for PB scale data transfer. You can rent snowball. Saves n/w cost, secured. You should always use snowball rather than import/export disk
+* Import/Export Snowball: for PB scale data transfer. You can rent snowball. Saves n/w cost, secured. You should always use snowball rather than import/export disk
 
 ## S3 Transfer Acceleration
 Transfer data first to edge location (using distinct url) which will then move it to S3. AWS optimizes this.
 Extra cost
 
 ## EC2 Elastic Compute Cloud
-Read: docs.as.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
-On demand Reserved Spot
-EBS - elastic block storage - storage volume attached to EC2 for database etc.
+[Read](docs.as.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+* On demand Reserved Spot
+* EBS - elastic block storage - storage volume attached to EC2 for database etc.
 You can have multiple disk/EBS on one computer/EC2 but not a disk shared between 2 computers.
-General purpose SSD: 99.99 durability, <10,000 IOPS Provisioned IOPS SSD - for high I/O noSQL >10,000 IOPS Magnetic: lowest storage cost
+General purpose SSD: 99.99 durability, <10,000 
+IOPS Provisioned IOPS SSD - for high I/O noSQL >10,000 
+IOPS Magnetic: lowest storage cost
 Choose Amazon Linux and then t2.micro type M4 and M3 (DIRT MCG)
 R- RAM intensive
 C- CPU intensive
@@ -248,6 +248,7 @@ ElasticCache- in memory cache - Memcached or Redis
 Automatically done. Retention by default 7 days but can be extended to 35 days. you can go up to the minute on recovery time. Choose a backup window. Storage i/o is suspended during backup.
 Snapshots done manually. Snapshots are available even when db deleted.
 Encryption - at rest using AWS KMS including the replicas and backup. You have to create a new instance with encryption and migrate the data into it.
+Data replicated to 3 AZ (AZ are data centers in same region)
 Multiple AZ for DR only. Cannot be used as an independent read node.
 Read Replica to boost performance. Asynchronous replication. Multiple AZ can read from multiple read replicas.
 Read replicas —read only copy of production database. can be used by dev or QA for
@@ -884,9 +885,34 @@ Customer problem:  Relevant search result
 Handles extreme thruput and available 24x7
 
 
+##### Questions for Cert
+* what AMI is used to launch T2 instance 
+HVM AMI
+* Bastion host
+Instances that sit within your public subnet. Act as a bridge to your private instances as you can ssh into bastion host and than jump to provate instances.
+* difference between Directory Service's AD Connector and Simple AD
+AD Connector lets you simply connect your existing on-premises Active Directory to AWS.
+Simple AD is an inexpensive AD compatible service.
+* permissions policy and trust policy
+Grant permission to user in IAM.
+Trust policy specifies which trusted accounts are allowed to grant its users permissions to assume the role
+* how Route53 supports all of the different DNS record types
 
+* which services have native encryption at rest within the region, and which do not. 
+Storage Gateway and Glacier do, but DynamoDB, CF, and SQS do not.
 
+* bucket policies, IAM policies, and ACLs for use with S3, and examples of when you would use each
+With IAM policies, companies can grant IAM users fine-grained control to their Amazon S3 bucket or objects while also retaining full control over everything the users do. With bucket policies, companies can define rules which apply broadly across all requests to their Amazon S3 resources, such as granting write privileges to a subset of Amazon S3 resources. Customers can also restrict access based on an aspect of the request, such as HTTP referrer and IP address. With ACLs, customers can grant specific permissions (i.e. READ, WRITE, FULL_CONTROL) to specific users for an individual bucket or object.
 
+[See more](https://aws.amazon.com/s3/faqs/)
+
+* when and how you can encrypt snapshots
+Public snapshots of encrypted volumes are not supported, but you can share an encrypted snapshot with specific accounts.
+[See more](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+
+* how you can use ELB cross-zone load balancing to ensure even distribution of traffic to EC2 instances in multiple AZs registered with a load balancer.
+
+[See more](http://jayendrapatil.com/tag/elastic-load-balancer/)
 
 
 

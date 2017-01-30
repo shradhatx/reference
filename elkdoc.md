@@ -54,7 +54,35 @@ Monitoring resource usage - monitor cache (gradual deterioration of perf) and he
 Important to know the memory profile of searches. Memory usage may grow faster as your data grows larger.
 Memory efficient query is a good idea.
 
+When is data available 
+200 Ok
+201 Created ie changes are synched on all active shards
+"Refresh" makes data available for search, refresh interval 1s or when buffer is full or on demand.
+refresh_wait_for is configurable
+consisency setting
 
+
+Indexing request goes to coordinator node, "write consistency" one by default or quorum 
+Search request uses LB and nvolves replicas & then scatter/gather
+
+Shards in ES - is for colocation of data
+
+ES creates 5 shards and 1 replica by default
+Shards can't be split across nodes.
+ES index in two shards is same as two ES index with one shard each.
+
+You can add nodes but not shards when in production.
+
+Master node, data nodes, client nodes in Zone A, B and C
+Shard routing table has cluster state. Use of 'routing key' 
+
+Index size between 1 and 16 times the heap size.
+
+Page cache - for term dict
+Field cache - for sorting field values
+Filter cache for filtering 
+
+Inverted index building requires lots of memory, built in segments that are flushed to storage.
 
 # Migrating to new version
 Rolling restart Vs cluster restart

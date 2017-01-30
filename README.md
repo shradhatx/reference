@@ -23,30 +23,58 @@ ii) FSMB maintains a database of ~1.4M on Physicians. Certains updates on physic
 
 * Elastic consultant on IMF project to propose an intranet search solution and demo PoC that replaces Microsoft FAST leveraging Elasticsearch that works seamlessly with Sharepoint, company websites and AD. 
 
-#### IgnitedD2K:  Build a product that leverages social data, integrating with structured/unstructured data from many different sources to draw useful insights for a business group.
+#### IgnitedD2K  
+Built a product that leveraged social data, and other structured/unstructured data collected from many different sources to predict useful metrics for clients.
 * Built end-to-end data pipeline 
 * Participated in backend data architecture and APIs
-* Data analysis and modeling- using python, panda, scikit-learn, numpy etc.  
+* Data analysis and modeling- using python, panda, scikit-learn, numpy etc.  (Also -used Random Forest Ensemble,SVM in Kaggle)
+* Topic modeling using LDA. wordtovec - singular word, doctovec  
 
-Used Hadoop/HDFS, AWS EC2, S3, Spark, Nosql technologies. 
-Created data pipelines in spark/kafka calling ML and business logic on the way and landing data on NoSQL/Hbase or Elastic or Dashboard (angular.js)
+> Used Hadoop/HDFS, AWS EC2, S3, Spark, Nosql technologies. 
+> Created data pipelines in spark/kafka calling ML model and business logic on the way and landing data on NoSQL/Hbase or Elastic or Dashboard (angular.js)
 
-usingCertfication in Data Science from coursera-
-Analyzing and interpreting data using advanced statistical methods
-Topic modeling using LDA. wordtovec - singular word, doctovec  
-ML- Ensemble, RF
-Kaggle
 
 #### Worked as Program Manager/ Technical PM on several projects of many flavors in Bank, Telecom, Healthcare Services etc.
 
-#### Worked in roles such as C/Java/Database preorammer, team lead and Dev Mgr.
+#### Worked in roles such as C/Java/Database programmer, team lead and Dev Mgr.
 
 #### Education background-Electrical Engineer & Computer Science 
 
 
 #### Questions
 Q: How to write LRU in scala, db connector
-ML : what is sensitivity, recall?
+
+DB connector: service that acts as a gateway to corporate DB.
+
+
+
+Q: In ML what is precision, sensitivity, recall?
+Sensitivity(also Recall) - measurement of performance of a model - ex classification test. Percentage of positives that are correctly idetified
+Specificity - percentage of negatives that are correctly identified as negative.
+ 
+Recall = TP/(TP+FN)
+Precision = TP/(TP+FP) 
+
+Ex: Total case 10,000
+TP: case was positive and predicted positive
+TN: case was negative and predicted negative
+FP: case was negative but predicted positive
+FN: case was positive but predicted negative
+
+
+
+               | Predicted Negative | Predicted Positive
+---------------|------------|---------------|
+Negative Cases | TN: 9,760  | FP: 140 |
+---------------|------------|---------------|
+Positive Cases | FN: 40     | TP: 60        |
+
+
+Percentage prediction correct: 'accuracy' was 9,760+60 out of 10,000 = 98.2%
+
+What percentage of the positive did you catch: 'recall' was 60 out of 100 = 60%
+
+What percentage of positive predictions were correct: 'precision' was 60 out of 200 = 30%
 
 
 #### Strength
@@ -121,7 +149,6 @@ See [my github home page](https://github.com/shradhatx/reference/blob/master/REA
    [elkref]: <https://github.com/shradhatx/reference/elkdoc>
    [sparkref]: <https://github.com/shradhatx/reference/elkdoc>
    [nosqlref]: <https://github.com/shradhatx/reference/nosqldoc>
-
 
 
 
