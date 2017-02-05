@@ -384,6 +384,10 @@ On right panel create an alias, Alias Target: SBWPLB
 Click EC2- create instance t2.micro, IAM role: mys3role; add bootstrap script(see
 below), EC2 Name: SBWPServer; Hit Launch
 
+#### [Tutorial to setup Web Server] (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html)
+
+#### [Tutorial to set up wordpress](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html
+
 ## bootstrap script
 #!/bin/bash
 yum update
@@ -918,4 +922,24 @@ Public snapshots of encrypted volumes are not supported, but you can share an en
 
 
 
+#### steps
+Sign up for AWS
+ account id 549615718704 
+Create an IAM user: ShradhaFeb
+ Test: https://549615718704.signin.aws.amazon.com/console/
+ sign with IAM username(Shradha) & pw(Mylove#12)
+ go to dashboard -> customize create alias
+Create a key pair
+Create VPC
+Create a security group
+
+
+
+chmod 600 SBFebKP.pem
+ssh ec2-user@52.11.240.248 -i SBFebKP.pem
+yum update -y
+yum install -y httpd24 php56 mysql55-server php56-mysqlnd
+service httpd start
+chkconfig httpd on
+chkconfig --list httpd
 
