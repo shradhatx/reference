@@ -62,20 +62,21 @@ Cognitive
 > Participated in backend data architecture and APIs
 > Topic modeling using LDA. wordtovec - singular word, doctovec  
 
-* Architecture:
-Data pipeline evolved over time
-Ingest from 100s of website (twitter OAuth - geo boundaries, keywords list; local radio sites, newspaper sites, business websites
-Attach tag for each data source; initial filters/clean; data+metadata put in kafka; --> reliable data ingestion & landing
-Use spark and transform and put in another topic --> clean data
-Build model(LDA) every day and put the model results in s3.
-Use Spark to read data from kafka, apply model get topic & sentiment, get demography and land data into HBase.
+##### Architecture:
+* Data pipeline evolved over time
+* Ingest from 100s of website (twitter OAuth - geo boundaries, keywords list; local radio sites, newspaper sites, business websites
+* Initial filters were applied and metadata attached and data was parked in kafka; 
+* Spark Cleaners - transform data and put in another topic 
+* Models were built (LDA) periodically and the model results were kept in s3.
+* Spark Movers- read data from kafka, apply model get topic, sentiment, get demography and land data into HBase.
 
-Loading ES index with user data aquired from DB USA (30 million).
-Separate process reading social handle, name, location from kafka, hit ES dbusa data & match with dbusaID and put in cache ---> also in Hbase dbusaid, social_handles
+* Demography data was bought from 3rd parties - Loaded into ES index (alll adults in US from DB USA 30 million).
 
-If no name, location then hit third party (fullcontact) to get info by handle -- hit ES dbusa & match with dbusaID.
+* Separate process reading social handle, name, location from kafka, hit ES dbusa data & match with dbusaID and put in cache ---> also in Hbase dbusaid, social_handles
 
-Periodic update of HBase from cache (cache with different handles -fb, twitter,...)
+* Third party like fullcontact used to get info by handle -  name, location -- hit ES dbusa & match with dbusaID.
+
+* Periodic update of HBase from cache (cache with different handles -fb, twitter,...)
 
 
 #### Questions
