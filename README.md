@@ -1,7 +1,7 @@
 ### Tell me about yourself.
 I am a IT professional passionate about technology and learning.  I thoroughly enjoy my work. I help my clients create products and solve business problems using IT. 
 
-In big data space, I specialize in solution architecture,  I also develop to solve specific business problem mainly in ES, NoSQL(cassandra, Hbase), PoC in graph DB (Titan, GraphX) and many other open source trending technologies in big data space.
+In big data space, I specialize in solution architecture,  I also develop to solve specific business problem mainly in ES, NoSQL(cassandra, Hbase), PoC in graph DB (Titan, GraphX) and many other open source trending technologies.
 
 I like to be engaged in big picture, involved in end to end solution and ROI.
 
