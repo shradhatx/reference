@@ -6,8 +6,7 @@
 Predict on future input based on learning on past input and labels
 
 > Unsupervised learning: learning from the unlabeled data, steps -
- segment data into segments or cluster exhibiting similar behaviors
- no way to describe cluster or how many cluster it will result into and who will fall into which cluster
+ segment data into segments or cluster exhibiting similar behaviors no way to describe cluster or how many cluster it will result into and who will fall into which cluster
 
 > Supervised Learning: when goal is a specific outcome; steps-
  train ML model by labeled data
@@ -20,15 +19,13 @@ Statistical Learning
 Reinforcement learning 
 
 ## Web crawling: Apache Nutch
+Nutch 2.x stream has abstraction layer that works with any data store
 
 Scrapy - python crawler
 
-Nutch 2.x stream has abstraction layer that works with any data store
+clustering algorith- k-means
 
 ## Enterprise search
-Searchblox Folder Link in Innovation Lab
- 
-https://intersysconsulting.sharepoint.com/consulting/innovationlab/SitePages/Home.aspx?RootFolder=%2Fconsulting%2Finnovationlab%2FShared%20Documents%2FSearchblox&FolderCTID=0x012000E9F1D16653AE3446AF16080286055B12&View=%7B8C2F12A9%2D152C%2D4FF2%2D915D%2D5C4527414957%7D 
 Searchblox AD integration
 https://searchblox.atlassian.net/wiki/plugins/servlet/mobile?contentId=30310416#content/view/30310416
 
@@ -81,36 +78,10 @@ WinRM (TCP/5986)
 URL to access Searchblox - http://intersyswin2012r2.cloudapp.net/searchblox/admin/main.jsp  
 
 username:admin password:intersys2016
-==== DEMO prep
- IMF_SerachDemo.ppt by Andrew - if you like that we can use that format.  Title International Monetary Fund (IMF) - Search Demo  with slides for - 1) Seachblox - Features 2) Security  3) Search capability 3) Next steps - High Level Estimates
-
-Question - how would you breakdown cost estimates? I am thinking you have to list high level tasks that will include tasks that Timo gives from Serachblox including the licenses(if any) cost and then integration work.
-
-
 
 
 
 ========
-
-Demo on 16: 1-202-623-0498
-
-Daily standup: 9:30EST  1800-281-5923,0007,,1234
-
-Agenda:
-1. Feature of SearchBlox in comparison with Sinequo
-
-2. Security: 
-Any known roadblocks ?  Risk: none
-
-*okta - by 12th morning
-AD - 
-
-*integrate imf.org and sharepoint sites with searchblok -  
-
-*ui - 
-shield: as an option
-authentication and access
-
 
 >>when an we have an internal demo of - a) okta,  b) integration with imf.org and sharepoint c) UI 
 
@@ -127,14 +98,6 @@ FAST - clickthrough and FAST
 sharepoint contact
 
 SeeUnity connector - 3rd party
-
-
-Problem at hand or use cases we are trying to resolve or trying to look for solution
-
-9-11AM CST meeting to 
-
-server account
-crawler account
 
 ==== AD for security 
 Solution Use case:

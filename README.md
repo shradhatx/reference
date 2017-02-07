@@ -1,52 +1,80 @@
 ### Tell me about yourself.
 I am a IT professional passionate about technology and learning.  I thoroughly enjoy my work, helping my clients create products and solve business problems using IT. 
 
-In big data space, I specialize in solution architecture, PoT, PoC, development in key technologies ELK, NoSQL(cassandra, Hbase, Mongo), graph DB (Titan, GraphX). I have worked on  many open source trending technologies in hadoop, spark, cloud. 
+In big data space, I specialize in solution architecture,  I have been doing PoT, PoC, also development to solve specific business problem mainly in ES, NoSQL(cassandra, Hbase), graph DB (Titan, GraphX). I have good knowledge on  many other open source trending technologies in big data space.
 
-I like to engage in end to end solution for any business problem and understand the big picture for ROI.
+I like to be engaged in big picture, involved in end to end solution and ROI.
 
-I have varied experience in Enterprise IT - dev, team lead & managed high performance teams in software dev, tech refresh, vendor management, data center setup for DR etc.
+I also have varied experience in Enterprise IT -  as a technical PM managed high performance teams in software dev, DW merger, tech refresh, vendor management, data center setup in a highly compliant financial banks. 
+I have programmed in  C/Java/Oracle Database PL/SQL.
 
-Business verticals - Banking, Telecom, Healthcare, Services - Insurance
-
-Education background- EE and Masters in CS
+I have also worked in-  Telecom, Healthcare, Insurance sectors
+I have my education in CS and Electrical Engineering 
 
 Goal - technical consulting role as big data solution architect leveraging open source technologies and cloud computing (virtual/hybrid/server-less infrastructure).    Also interesting to me is a senior developer/lead in Elastic/ELK.
 
 
 #### Tell us about the architecture of your most interesting project
 
-Intersys Consulting: to solve sticky business problem leveraging ES coz the prob  seems to do with search
+Intersys Consulting: to solve sticky business problem leveraging ES (boundary by customer) coz the prob  seems to do with search
 * Elastic consultant on Federation of State Medical Board projects.  
 Perform exploratory and feasibility analysis of client’s data and processes and provide technology roadmap and iterative solution architecture with focus on Elastic 5.x with a goal to improve data quality and operation efficiency.
 
 PoT and PoC - demo capabilities of ES with FSMB data sample.  Propose overall solution, iterative roadmap, work breakdown and estimates. Two of the projects I worked on at FSMB-
 
+i) FSMB gets board orders in PDF from different States (court order stating if the physician is reprimanded, barred from performing certain procedures, or cleared of prior accusation or license reinstated). Over 250 categories.
+These are reviewed manually and categorize choosing from over 250 categories. FSMB wants to learn about automating the process utilizing text search, NLP and categorization. They have Elastic stack and wanted to explore the capabilities in Elasticserach first.    
+Architecture: 
+Ingest pdf using ingest pipeline -convertng pdf to base64 
+Use of percolator to identify the basis and order
+Userinterface to review the top 3-5 top scored categories before persisting.
+Off course queue to keep requests, user access etc.
 
-i) FSMB gets board orders in PDF from different States. These are reviewed manually and categorize choosing from over 250 categories. FSMB wants to learn about automating the process utilizing text search, NLP and categorization. They have Elastic stack and wanted to explore the capabilities in Elasticserach first.    
 
 ii) FSMB maintains a database of ~1.4M on Physicians. Certains updates on physicians are available monthly from another source in a csv file with over 300 fields and ~ 6M records.  There is no common identifier.  FSMB wanted a solution to efficiently match these Millions of records with FSMB database first comparing many fields to correctly identify the physician and then noting changes and updating FSMB record.
-
-* Elastic consultant on IMF project to propose an intranet search solution(intranet that provide internet like search experience- auto classification)  and demo a PoC that replaces Microsoft FAST leveraging Elasticsearch that works seamlessly with Sharepoint, company websites and AD. 
-BAInsight, SearchBlox
-
-#### IgnitedD2K:  most interesting coz -lots of parts, my end-to-end involvement 
-Product that leveraged social data, and data structured/unstructured collected from many different sources to predict good quality leads for clients.
-* Built end-to-end data pipeline, life of data
-* Participated in backend data architecture and APIs
-* Data analysis and modeling- using python, panda, scikit-learn, numpy etc.  (Also -used Random Forest Ensemble,SVM in Kaggle)
-* Topic modeling using LDA. wordtovec - singular word, doctovec  
-
-> Used AWS EC2, S3, Spark, Nosql technologies. 
-> Data landing on kafka after initial filtering 
-> Created data pipelines in spark calling ML model and enriching data on the way and landing data on NoSQL/Hbase or Elastic or Dashboard (angular.js)
+Architectue:
+Ingestion of monthly file in ES
+Bulk query request for matching
+User Interface to review categorized results and persist
+Interface with existing company db 
+Improve matching algorithm - manual retry or running multiple queries in the background
 
 
-#### Worked as Program Manager/ Technical PM on several projects of many flavors in Bank, Telecom, Healthcare Services etc.
+* Elastic consultant on IMF project to propose an intranet search solution(intranet that provide internet like search experience- auto classification)  and demo a PoC that replaces Microsoft FAST leveraging Elasticsearch that works seamlessly with Sharepoint, company websites and AD. Support for various documet format - xml, doc, db, many languages, images, emails, relevant search results, semantic understanding of content and query, NLP, Interactive, 
+BAInsight, SearchBlox, Sinequa
+Crawl company web site and Sharepoint, tag metadata and index (categorization - person, location, org)
+Import user access
+Integration with db/mail etc
+Cognitive 
 
-#### Worked in roles such as C/Java/Database programmer, team lead and Dev Mgr.
 
-#### Education background-Electrical Engineer & Computer Science 
+#### IgnitedD2K:  most interesting coz -lots of parts, also coz of my end-to-end involvement 
+* Team was building a product that leveraged consumer data from various sources, structured/unstructured data, to predict good quality leads for prospective clients.
+* Enrich -  filter, topic, ip to location,handle/id to name and location, sentiment, best way to contact etc. while building consumer database
+* Merge with structured data (demography on consumer collected from database usa - all adults in US )
+* REST using python Flask
+* Dashboard using angular.js
+
+> Used AWS EC2 M4-L, XL, S3, Spark, Nosql technologies. 
+> Data analysis - using python, panda, scikit-learn, numpy etc.  (Also -used Random Forest Ensemble,SVM in Kaggle)
+> Built data pipeline 
+> Participated in backend data architecture and APIs
+> Topic modeling using LDA. wordtovec - singular word, doctovec  
+
+* Architecture:
+Data pipeline evolved over time
+Ingest from 100s of website (twitter OAuth - geo boundaries, keywords list; local radio sites, newspaper sites, business websites
+Attach tag for each data source; initial filters/clean; data+metadata put in kafka; --> reliable data ingestion & landing
+Use spark and transform and put in another topic --> clean data
+Build model(LDA) every day and put the model results in s3.
+Use Spark to read data from kafka, apply model get topic & sentiment, get demography and land data into HBase.
+
+Loading ES index with user data aquired from DB USA (30 million).
+Separate process reading social handle, name, location from kafka, hit ES dbusa data & match with dbusaID and put in cache ---> also in Hbase dbusaid, social_handles
+
+If no name, location then hit third party (fullcontact) to get info by handle -- hit ES dbusa & match with dbusaID.
+
+Periodic update of HBase from cache (cache with different handles -fb, twitter,...)
 
 
 #### Questions
@@ -57,7 +85,7 @@ DB connector: service that acts as a gateway to corporate DB.
 
 
 Q: In ML what is precision, sensitivity, recall?
-Sensitivity(also Recall) - measurement of performance of a model - ex classification test. Percentage of positives that are correctly idetified
+Sensitivity(also Recall) - measurement of performance of a model - ex classification test. Percentage of positives that are correctly identified
 Specificity - percentage of negatives that are correctly identified as negative.
  
 Recall = TP/(TP+FN)
@@ -85,22 +113,46 @@ What percentage of the positive did you catch: 'recall' was 60 out of 100 = 60%
 What percentage of positive predictions were correct: 'precision' was 60 out of 200 = 30%
 
 
-#### Strength
-- Motivated to do the best & deliver high quality solu, I am adaptable, result driven- Always in
-touch with the business goals while deep diving in technology- problem solving skills.
-- Have emotional maturity.
-- Can accomplish your strategic/tactical goals. I can lead and build a high performing technical team.
-- There are so many technologies and alternate ways to do things. I am adaptable.
-- I have passion for technology and learning. 
+#### Personal Strength
+ > Motivated to do the best, be in touch with the business goals while deep diving in technology- problem solving .
+ > I know the process(that is proven) to deliver high quality solu and meet customer goals and team focused(accountability & assertive)
+ > build agreement understanding the tradeoffs
+ > Listen & involve all - There are so many technologies and alternate ways to do things. See you are not missing out input. Understand personality types. 
+ > Have emotional maturity.
+
+
+Leadership skills
+* customer first
+  We all have learnt a lot from Steve Jobs-
+  You’ve got to start with the customer experience and work back towards the technology.
+  —Steve Jobs
+  Ex: Keep in mind triple constraint of customer project- Cost, Schedule, and Scope
+* good judgement and instinct
+   Ex: My PM b/g guides me to pay attention to trade offs
+   whether convincing the team to agree to iterative solution approach or to remind them of project goals.h
+* develop the talent in team
+  80-20 principle applies to every team. But I also recognize that all 4 personality type have a place in team- leaders, followers, entertainers.
+Aanalytical, driver, amiable, and expressive
+
+  `Ex: Many members of the team are lost without a clear requirement or constantly changing requirement.  Using R&D and continuously build a deployable solution and seek feedback I found is a great approacha`
+  R&D and
+* take ownership
+  Language agnostic world - well almost!!
+  Good example is microservices - approach a complex problem in small manageable independent chunks.
+  Java EE (monolithic with generally strong coupling between components/services, deployed like EAR/jar as single running instance - very fragile.)
+
 
 #### Weakness
-I had as PM - challenge to say no to work request -inundated with continuously changing demands. Learned the importance to prioritize intake - team or people work best when targets are achievable - challenging but possible.
-Now value pragmatism over perfection.
+As a developer - challenge to say no to work request -inundated with continuously changing demands. 
+As a PM Learned the importance to prioritize intake - team or people work best when targets are achievable 
+Negotiation explaining the tradeoffs works well
+Now I value pragmatism over perfection.
 
 #### Questions to ask interviewer
 
 > Q: is there anything i can tell you about me that would help you make a hiring decision?
-> Q : tell me about your process of customer engagement and solution implementation & delivery strategy.
+> Q: tell me about your process of customer engagement? 
+> Q: tell me about yourprocess of implementation & delivery strategy?
 > Q: Is the solution hosted on cloud or on-premise?
 > Q: Technologies you are using - real time spark /storm /impala
 > Q: If I were hired what would my project look like? what is your (or scope & life) most recent project (that is completed) about?
@@ -109,15 +161,13 @@ Now value pragmatism over perfection.
 > Q: Can you describe my role and responsibilities if hired?
 
 * Requirements
-Understand requirements - performance, security, access, archival, access patterns, consistency, availability, tolerance for downtime for upgrade if updating existing system etc.
+Understand requirements - data volume, access patterns, security and compliance, performance, archival, access patterns, consistency, availability, tolerance for downtime. 
 
 Understand tradeoffs on solutions presented. Tradeoffs on CAP are real and these are business decisions not engineering.
-
 
 Infrastructure: Evolve: on-premise/virtual/hybrid
 Datastore: Keep it simple, understand flexibility CAP- pros for your use-case
 Application: synchronous or Asynchronous
-
 
 
 #### Technical reference

@@ -1,10 +1,21 @@
 ## AWS Certified Solutions Architect
+42 AZ and 16 regions around teh world
+US - 4 regions, 2 in West and 2 in East
 * draw.io — check to build n/w diagram
 * Exam
 Register at https://www.webassessor.com
 $150 fee at a specified center
 awscertification@aws.com https://aws.amazon.com/certification/certified-solutions-architect-associate/ aws.amazon.com/training/architect
 aws.amazon.com/architecture https://aws.amazon.com/training/intro_series/
+* Console
+IAM Dashboard
+  Groups, Users, Policies, Encryption Keys
+EC2 Dashboard
+  Launch- select AMI, Network/VPC, Subnet, Spot request, Public IP, IAM role
+CloudWatch Dashboard
+  Metrics on EC2(CPU, data transfer, disk usage), RDS, DynamoDB, ELB, SNS,...
+resource utilization, application performance, and operational health.
+
 > Best practices for AWS architecture
 > Design cloud services/plan/monitor-Pricing 
 > RTO (recovery Time Objective) & RPO (Recovery Point Objective) DR Design

@@ -1,15 +1,12 @@
-# Logstash - reference material
-Check the performance of CPU input source and output
-destination.
+#### Logstash - reference material
+
+* Check the performance of CPU input source and output destination.
 Check CPU: top -H
 (if CPU usage is high that is good. Next look for JVM heap)
-Memory: Logstash runs on JVM. Check what else is running and if
-log stash is not swapping back to disk often
-Check for disk saturation: see if logs are not filling up disk
-space and lot of i/o as well
-Check for network saturation
-Use  monitoring APIs- node info api, plugin api, node stats, hot
-threads
+* Memory: Logstash runs on JVM. Check what else is running and if log stash is not swapping back to disk often
+* Check for disk saturation: see if logs are not filling up disk space and lot of i/o as well
+* Check for network saturation
+* Use  monitoring APIs- node info api, plugin api, node stats, hot threads
 localhost:9600
 GET /
 GET /_node/jvm
@@ -18,8 +15,7 @@ GET /_node/pipeline
 Syntax - input, filter, output
 input { stdin { } }
 filter {
-mutate { add_field => { "show" => "This data
-will be in the output" } }
+mutate { add_field => { "show" => "This data will be in the output" } }
 mutate { add_field => { "[@metadata][test]" => "Hello" } }
 mutate { add_field => { "[@metadata][no_show]" => "This data will not be in the output" } }
 }
@@ -45,10 +41,8 @@ mutate { remove_field => "secret" }
 Note : Overriding @timestamp with time in the message
 input { stdin { } }
 filter {
-grok { match => [ "message", "%{HTTPDATE:
-[@metadata][timestamp]}" ] }
-date { match => [ "[@metadata][timestamp]",
-"dd/MMM/yyyy:HH:mm:ss Z" ] }
+grok { match => [ "message", "%{HTTPDATE: [@metadata][timestamp]}" ] }
+date { match => [ "[@metadata][timestamp]", "dd/MMM/yyyy:HH:mm:ss Z" ] }
 }
  output {
  }
