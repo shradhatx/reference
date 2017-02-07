@@ -7,7 +7,7 @@ I like to be engaged in big picture, involved in end to end solution and ROI.
 
 I have worked in Enterprise IT -  as a developer, technical PM, and  managed high performance teams in software dev, DW merger, tech refresh, vendor management, data center setup in a highly compliant financial banks. 
 
-I have programmed in  C/Java/Oracle Database PL/SQL.
+I have coded in many languages C/Java/Oracle and extensively worked on Oracle Database PL/SQL.
 
 I have also worked in-  Telecom, Healthcare, Insurance sectors
 I have my education in CS and Electrical Engineering 
