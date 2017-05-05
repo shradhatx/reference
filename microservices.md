@@ -1,3 +1,7 @@
+#### SMACK architecture Spark Mesos Akka Cassandra Kafka
+https://info.lightbend.com/WBN-2017-MAR-Building-Streaming-and-Fast-Data-Applications-with-Spark-Mesos-Akka-Cassandra-and-Kafka_RES-TY.html?aliId=22621169
+
+
 #### notes from book Ractive Microservices Architecture pdf
 Polyglot persistence - state stored in any storage medium NoSQL, RDBMS, Kafka etc. 
 

@@ -1,5 +1,7 @@
 ## AWS Certified Solutions Architect
-42 AZ and 16 regions around teh world
+www.slideshare.net
+
+42 AZ and 16 regions around the world
 US - 4 regions, 2 in West and 2 in East
 * draw.io — check to build n/w diagram
 * Exam
@@ -13,7 +15,7 @@ IAM Dashboard
 EC2 Dashboard
   Launch- select AMI, Network/VPC, Subnet, Spot request, Public IP, IAM role
 CloudWatch Dashboard
-  Metrics on EC2(CPU, data transfer, disk usage), RDS, DynamoDB, ELB, SNS,...
+  Metrics on EC2(CPU, data transfer, disk usage), RDS, DynamoDB, ELB, SQS, SNS,...
 resource utilization, application performance, and operational health.
 
 > Best practices for AWS architecture
@@ -130,7 +132,12 @@ S3: $0.03 per GB up to 1TB/month
 * RDS- relational database services
 * Dynamo DB - NoSQL -non relational db Elasticache - caching db query results on cloud 
 * Redshift - DW service
-DMS- DB Migration Service ex: oracle to MySQL
+DMS- DB Migration Service supports migration to Amazon Aurora or Redshft as a migration target - by streaming data from Oracle and other sources like MySQL, SQL Server, Postgres etc.
+Migrating a terabyte-size database can be done for as little as $3. You pay for compute resource only.
+Schema Conversion tool - for easy migration to heterogeneous db
+
+https://aws.amazon.com/dms/
+https://aws.amazon.com/documentation/dms/
 
 ## Analytics-
 * Elastic Map Reduce (EMR)
@@ -214,7 +221,8 @@ With role you do not have to put secret key and password on EC2 thereby making i
 #!/bin/bash
 yum install http -y
 yum update -y
-aws s3 cp s3://<fn> <dir> service https start
+aws s3 cp s3://<fn> <dir> 
+service https start
 
 ## Metadata on EC2
 curl http://169.254.169.254/latest/meta-data/public-ipv4
@@ -296,7 +304,8 @@ Not designed for multiple AZ
 
 ## Elasticache
 Supports two open source in-memory caching:
-Memcached- compliant with popular Memcached. Do not support multi AZ Redis - k-v store, supports list and sorted sets, supports multi AZ
+Memcached- compliant with popular Memcached. Do not support multi AZ 
+Redis - k-v store, supports list and sorted sets, supports multi AZ
 When data is not prone to frequent changing and is read heavy because of OLAP queries you can cache the data in memory
 
 ## Aurora
@@ -375,8 +384,8 @@ Media transcoder in the code read.acloud.guru
 
 ## Building a Fault Tolerant Wordpress site
 Users connect to route53 into Cloud Front, 2 EC2 instances behind an autoscaling group;
-Multi AZ enabled RDS instances; The set up will automatically heal with no downtime. Keep media assets and code into S3
-Health check and failover; Region replication on bucket.
+Multi AZ enabled RDS instances (by default); the set up will automatically heal with no downtime. 
+Keep media assets and code into S3. Health check and failover; Region replication on bucket.
 * create IAM (identity Access Management) role for s3 (mys3role)- for EC2- give full access to s3.
 * go to VPC and create 2 security groups (WebSG for EC2s and RDSSG for RDS) WebSG -> Inbound rule - allow SSH and HTTP
 RDSSG -> Inbound url - type: MySQLAurora, source: WebSG
@@ -551,7 +560,7 @@ Cloud Security Alliance
 
 ## Benefits AWS/Cloud computing advantage
 Business benefits: Capital Expense/zero upfront cost, Economy of scale, usage based costing, elastic, agility/JIT infrastructure, no maintenance data centers, go global in mins/reduce time to market
-Technical benefits: automation, more efficient development life cycle, scriptable infrastructure, improve testability, DR & business continuity, autoscaling (elastic scaling), proactive scaling, overflow traffic to the cloud incrementally.
+Technical benefits: automation, more efficient development life cycle, scriptable infrastructure, improve testability,reliable/fail-safe, DR & business continuity, autoscaling (elastic scaling), proactive scaling, overflow traffic to the cloud incrementally.
 
 > Tips:
 Design for failure: Be pessimist and think about recovery strategies during design time. Ex: Simian monkey by Netflix- designed to cause trouble ex destroys the instance or slow them intentionally.
@@ -953,4 +962,75 @@ yum install -y httpd24 php56 mysql55-server php56-mysqlnd
 service httpd start
 chkconfig httpd on
 chkconfig --list httpd
+
+#### A/B testing
+comparing two versions of a webpage or app against each other to determine which one performs better. 
+
+
+
+### Launching EC2 spot instances
+
+### Redis Vs memcached
+Here are a few of the features that redis offers which memcached doesn't and allows redis to be used as a "real" data store instead of just a cache.
+Redis offers powerful data tyoes and powerful commands to leverage them - hash, sorted sets, lists and more.
+The powerful data types are particularly important. They allow redis to provide a fantastic shared queue (lists), a great messaging solution (pub/sub), a good place for storing sessions (hashes), and a compelling place for high score tracking (sorted sets). 
+
+Redis supports - persistence to disk by default; txn ith locking (WATCH/MULTI/EXEC); pub/sub; values upto 512MB (memcached limits to 1MB per key)
+
+#### AWS IoT
+AWS Webinar 
+https://www.youtube.com/watch?v=-HhBZm2Er2g&feature=youtu.be
+AWS IoT
+connect any device using MQTT or HTTP with IoT starter kit
+websocket to connect to any mobile device
+
+All in one service for $5/Million msg
+message broker
+rules engine
+shadow (virtual representation of device in the cloud that is useful in case device goes offline)
+registry
+
+Authentication: X509 certificates and multual authentication
+Certificate management
+Use of IAM
+Encryption : TLS1.2
+Crypto chip - AWS IoT out of the box - using ECC508 already provisioned at secure facility
+
+Beaglebone, dragonboard, Ti Launchpad, Intel Edison
+ 
+1GB data cost $10K
+
+Greengrass provides client s/w for IoT for pre-processing - moving it on the edge -local lambda function on device, apply rules, local security etc. Greengrass hib talks to AWS. It reduces cost of IoT applications also responds to device quickly.
+
+sigfox, bsquare, thinglogix
+
+
+
+#### Talend on AWS
+47lining a consulting company for data integration
+
+Raw event ingest to Data Lake on S3 - customer behaviour organized based on time
+Incremental load to Amazon Redshift(starts from previous snapshot) and holds the active data set
+Recommendations data prep on current and historic data
+EMR to run the predictive analytics on transient hadoop cluster
+output kept on S3
+
+
+
+
+
+
+
+
+#### check answers to these
+multi-part load to S3
+
+>data lake on S3 - separate data by business unit, application, type, and time
+paths should be self documenting
+use compression
+automate use trigger based workflows
+
+>data lake with akka, kafka, spark
+https://www.lightbend.com/blog/architect-reactive-design-patterns
+
 

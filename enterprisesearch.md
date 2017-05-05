@@ -32,7 +32,6 @@ Elastic search and Solr
 
 Industry continues to grow spurred by both commercial needs as well as security challenges. 
 
-
 User experience - context knowledge, Natural language, Speech recognition.
 semantic understanding of both content and queries.
 
@@ -48,12 +47,9 @@ semantic understanding of both content and queries.
 
 Navigation based on metadata (IMF ex- org, location, type) - based on analysis of document’s unstructured content
 
-
 Search engines handling more business process automation tasks - Ex: customer complaint - email or letter received - the engine will relate its contents and even provide answers and frame replies.
 
-
 What we are proposing today can evolve into our future needs - roadmap for improving the relevancy of results??
-
 
 Evolving - development towards the most effective ways to find conceptually relevant information.
 

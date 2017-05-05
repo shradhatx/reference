@@ -1,27 +1,51 @@
-#### Leadership principles
+### About
+I am an IT consultant - I help Architect and design a workable IT solution for my clients, solve technical or business problems using IT, PoT/PoC code -- whatever it takes.
+
+Held variety of roles over many years in IT
+- developed in many languages
+- managed IT teams
+managed programs and projects of many flavors
+-customer facing roles and vendor management as well
+
+Last 4 years I have been in big data spaces-
+2 years with a startup
+- predictive analysis and lead generation by integrating consumer data, ingest, enrich, merge, apply ML model, store  
+- end to end solution with data pipeline, and real time analytics.
+search and present - REST - angular.js
+
+Presently working as a consultant - (depends on what is asked and the maturity of clients in big data)
+- exploralarity and feasibility analysis, prototype dev
+- propose overall solution, roadmap, WBS and estimate
+- solving sticky problem related to ES, cognitive search, intranet search
+
+#### Leadership principles/what would your boss say about you
+* wear many hats
+* take ownership: you can rely on me for quality work/deliverables.
+  Language agnostic world - well almost!! 
+  Good example is microservices - approach a complex problem in small manageable independent chunks.
+  Java EE (monolithic with generally strong coupling between components/services, deployed like EAR/jar as single running instance - very fragile.)
+* shows flexibility
+* listens & respect others
 * customer first
   We all have learnt a lot from Steve Jobs-
   You’ve got to start with the customer experience and work back towards the technology.
   —Steve Jobs
-  Ex: Keep in mind triple constraint of customer project- Cost, Schedule, and Scope 
-* take ownership
-  Language agnostic world - well almost!! 
-  Good example is microservices - approach a complex problem in small manageable independent chunks.
-  Java EE (monolithic with generally strong coupling between components/services, deployed like EAR/jar as single running instance - very fragile.)
+  Ex: My PM b/g guides me to pay attention to trade offs
+  Keep in mind triple constraint of customer project- Cost, Schedule, and Scope 
 * encourage innovation
   Microservices with isolation possible using virtualization, docker - resiliency, scalability, CD.
   Discreet and isolated sub-systems communicating over well defined protocolsi(asynchronous, share nothing).
-* good judgement and instinct
-   Ex: My PM b/g guides me to pay attention to trade offs
-   whether convincing the team to agree to iterative solution approach or to remind them of project goals.h
+
 * always a learner
+ listen to ideas coming from team.Encourage calculated risk taking 
 
 * develop the talent in team
+   whether convincing the team to agree to iterative solution approach or to remind them of project goals.
   80-20 principle applies to every team. But I also recognize that all 4 personality type have a place in team- leaders, followers, entertainers.
 Aanalytical, driver, amiable, and expressive
-
   `Ex: Many members of the team are lost without a clear requirement or constantly changing requirement.  Using R&D and continuously build a deployable solution and seek feedback I found is a great approacha`
   R&D and 
+
 * high standard/quality product
   Stress on automation, knowledge sharing, brinstormin
   
@@ -29,18 +53,9 @@ Aanalytical, driver, amiable, and expressive
   `Ex: Moving from traditional/monlithic to 100s of microservices is hard to grasp.`
 
 * bias for acion (try - as most actions are reversible) - calculated risk taking
-
-* frugality
-
-* earn trust: listen, respect
-
-* Dive deep: detail, audit, metrics 
-
 * disagree and commit: challege decision but commit once decision is made
   `Ex: These days in a language agnostic developemt you would expect one to be given levay to make use of whatever one chooses to get the work done.  One team member was insisting that eveyone uses scala coz of common libraries - some new folks had liking for python.`
-Solu: how we can integrate and learn new techniques liek microservices... 
-
-* deliver results: despite setback never settle  
+Solu: how we can integrate and learn new techniques like microservices... 
 
 I have yet to be on a project where everyone agrees about everything. 
 Also, have to make sure the ideas are invited from everyone without putting anyone on spot. Remember personality type and adjust your communication. Also satisfy  technical folks ego.
@@ -67,14 +82,11 @@ Let data speak.
 Frivolous work or unachievable deadlines affects the team morale.
 
 One time business asked for some feature that dev team thought was frivlous stuff but it turned out to be a differntiating feature that customers really liked.  Often stakeholders are right and know the market pulse.
-When solving problems get the notes, research, data and come up with solution that fit client first then all others.
+When solving problems get the notes, research, analyze data and come up with solution that fit client first then all others.
  
-Don't let ego get in the way. Don't be defensive if your opinion differ. Show humility. It canbe hard but that's how we grow from good listener to great.
+Don't let ego get in the way. Don't be defensive if your opinion differ. Show humility. It can be hard but that's how we grow from good listener to great.
 
 Get in the head and hearts of the clients/stakeholders. Walk a mile in their shoes. Discern business problems and see if the solution helps them accomplish their goals.
-
-Unified focus, common mission helps build team. Empathy. Make allies. Build relationships of trust and accountability. 
-
 
 #### open amazon account
 Go to aws.amazon.com and create an account and understand how the platform and the console come together and how things work. 
@@ -89,13 +101,10 @@ Ex: 8kMiles, Aquilent, 2ndWatch, DataPipe, CloudReach
 APN Technology partner: have solution hosted on AWS platform
 Ex: Acquia, Appian, Alert Logic, Dynatrace, Infor, Splunk(opn data analytics - logs), Sumologic
 
-
-
 #### check blogs
 * Starting Jan 30 workspace have SSD storage at no cost - better performance
 * MXNet deep learning engine now an apache project Jan 30, 2017. Recommendation modeling 
 * Amazon Cloud Directory - hierarchial 
-
 
 #### [Watch videos on architecture](https://aws.amazon.com/this-is-my-architecture/)
 * ESEYE 
@@ -139,7 +148,7 @@ Tier1 -- 2xEC2 cleansing  -- > S3 (& 2 SQS)
 Tier2 (2xEC2 for real-time and bulk)  --> target (aurora for opn reporting Vs Redshift that is for historial reports)
 2 Aurora One master and other replica. User hit replica through Route53
 
-[See architecture diagram](on desktop)
+[See architecture diagram](EndToEndArch_Talend on desktop)
 
 * Palo Alto Networks : Autoscaling VM : Warby Warburton
 ELB and auto scaling
@@ -167,7 +176,6 @@ ELB for load balancing
 Active-Active
 Horizontal as well vertical scalability depending on customer on L or XL
 
-
 * Lyft: Micro Services & Discovery: Chris
 over 150 microservices over 30 groups, over 200 deployments in a day
 over million request per sec
@@ -192,7 +200,6 @@ Internal ELB
 OGW (outbound gateway)
 GRD tunnels to workers where traffic is inspected and allowed or denied
 
-
 * Ignited2k
 Predictive analytics and lead generation by integrating consumer data from various sources
 Ingest and process massive amount of unstructured data. 
@@ -200,8 +207,6 @@ Enrich -  topic, filter, ip to location, Ex fullcontact, location
 Merge with structured data (from database usa - demography of all adults in US )
 Enrich - sentiment 
 REST using python Flask
-
-
 
 Data from different sources - batch and real time 
 Near real time insight 
@@ -214,15 +219,13 @@ use of s3 to stored data, IA and archive
 use of EC2 for running kafka 
 parallel workflow for low latency  
 
-
 To move, to breathe, to fly, to float,
 To gain all while you give,
 To roam the roads of lands remote,
 To travel is to live.
 —H.C. Andersen
 
-The greatest obstacle to discovery is not ignorance—it is the illu‐
-sion of knowledge.
+The greatest obstacle to discovery is not ignorance—it is the illusion of knowledge.
 —Daniel J. Boorstin
 
 Silence is not only golden, it is seldom misquoted.
@@ -277,14 +280,12 @@ Audit, control, agility
  Detective - visibility
  Responsive - remediation from potential deviation
 
-
 #### Architecting and designing optimum solu. 
     Design architecture: business vision, goals & objectives, conceptual and logical (functional) design diagrams.  Used to communicate architecture to business-focused stakeholders.
-    Implementation architecture: physical views within IT system and specific implementation com[ponents and their relationships. Used primarily by technical stakeholders. 
+    Implementation architecture: physical views within IT system and specific implementation components and their relationships. Used primarily by technical stakeholders. 
 
 ### AWS Enterprise accelerator
 Professional services offered by AWS to enterprise customers to rapidly achieve key capabilities or meet specific objective ex: value analysis, compliance jumpstart (HIPAA, MPAA,...), SAP architecture, application optimizationi etc.
-
 
 #### IgniteD2k
 First on cloud till hardware was procured (used from DELL) then containing cost became important. 
@@ -298,10 +299,6 @@ Define governance structure
 Aquiring/traing people - devops, cd/ci/automation needs
 Define security requirements
 Audit- cost analysis
-
-
-
-
 
 The speed of development and deployment in the cloud
 encourages an iterative approach. Deliver functionality incrementally and catch and fix defects early.
@@ -421,6 +418,7 @@ Implement app layer error handling and recovery logic
 5) Messaging app: large and small attributes mixed
 MessageTable: Receipient+Date+Sender+message
 GSI: Sender+Date
+
 Cost: 50(items evalated by query) * 256KB(average item size) * (1RCU/4KB) (conersion ratio) * (1/2) (eventual consistent reads) = 1600 RCU
 
 Solu: vertical partition to avoid reading the complete message body ie create another table
@@ -461,6 +459,64 @@ splitting and merging of stream
 ##### Lambda 
 
 ##### hybrid architecture
+
+
+#### Questions:
+What is missing in AWS services?
+TCP Vs UDP? Give examples when one is used?
+What is cache?
+What is hash function in security?
+  it is a mathematical algorithm that maps data of arbitrary size to a bit string of a fixed size (a hash function)
+  one way, only way to break it is brute force.
+What is dedup? 
+  ordinary hash functions, to index data in hash tables, for fingerprinting, to detect duplicate data or uniquely identify files
+   length-extension volunerabilities
+What are differnt web development framework?
+What kind of information is in query analyzer?
+What would you look for if your manager says check the utilization of infrastructure?
+What is CDN? Does is cache dynamic content?
+A company has launched a product and wants to know the sentiment of people on social media, how would you go about it?
+
+Q: Difference between SAFe (Scaled agile framework) Vs Scrum
+A: SAFe fills the gap in taking it to program level whereas Scrum is for small team 
+Ex: SAFe for big level school of thinking like RUP (Rational Unified Process) 
+SAFe stage gate, process heavy  (some call it waterfall finding its relevancy)
+
+Kanban
+
+
+SAFe is a patchwork aproach to agile; it stops the people from working on backlog for release planning
+In agile each sprint needs to produce something of value but this is not required in SAFe.
+Hardening sprint - is common in SAFe which kind of becomes a sink for technical debt
+
+Normalizing story points between teams robbed them of control of their own process. Their metrics were no longer their own for the purpose of inspection and adaptation. Instead they were used by management, ostensibly to facilitate planning, but also with a view to comparing teams. There was a real danger of "point-productivity" becoming more important than the actual delivery of potentially releasable increments. 
+
+* Software Development methodologies- framework to structure, plan, and control the process of developing an information system.
+SDLC
+Waterfall: 
+Scrum: short timeboxes
+Spiral
+Agile s/w dev
+XP
+Rapid App Dev
+Feature driven dev
+Joint application dev
+Dynamic System Dev Model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

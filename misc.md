@@ -1,6 +1,4 @@
 # Miscellaneous notes 
-## Ideas on blogs-
- 
 * Predictive Analytics, Statistical probability, Machine Learning and Artificial Intelligence
 
 Predict on future input based on learning on past input and labels
@@ -24,6 +22,22 @@ Nutch 2.x stream has abstraction layer that works with any data store
 Scrapy - python crawler
 
 clustering algorith- k-means
+
+classification technique- naive bayes assumes all features are independet of each other in its predictions. Improve by data preprocessing (normalising, missing data) and feature selection.
+
+Confusion matrix - used for evaluation of a classification algorithm
+Accuracy of a model = (TP+TN) / (TP+FN+FP+TP)
+
+For imbalanced data set where occurance of event is rare ex-fraud, technique used is - resampling techniques
+of training data by pre-processing and having n sample equal number by building up the minority class data
+Disadv- overfitting
+
+Boosting - Ada boosting, gradient boosting
+
+Neural network- for image recognition, speech recognition
+Most ML algorithms tend of lose accuracy when given a data set with several variables, whereas a deep learning model does wonders in such situations.
+
+
 
 ## Enterprise search
 Searchblox AD integration
@@ -99,7 +113,7 @@ sharepoint contact
 
 SeeUnity connector - 3rd party
 
-==== AD for security 
+==== AD Active Directory for security 
 Solution Use case:
 - time it takes for full crawl 
 - security update (need  to detect changes to avoid full crawl - user add/delete to source system, security change to a folder etc.)
@@ -244,7 +258,6 @@ GM:
 *Mark Miller
 Eric
 *Denis 
-Srini
 
 ## FSMB Contacts
 Cyndi Streun, SVP Information Systems
@@ -261,19 +274,21 @@ Cheryl Rojo <crojo@fsmb.org>
 ## Personal Rajasthan trip
 
 March 9  - Start from US & reach Delhi March 11 late evening
-              Delhi - Dinner at Cyber Hub Gurgaon (Farzi Cafe), ( Buy white Kurta pajama for Holi)
+              Delhi - Dinner at Cyber Hub Gurgaon (Farzi Cafe)
 March 11 -
          Overnight Gurgaon
 March 12 - drive to Agra  
            **check if Taj is open on Sunday
            Agra - Agra fort, Taj Mahal during the day and at sunset  
-        Dinner - Enjoy Mughlai cuisine
-        Overnight Agra (Hotel: Seven Hills Tower;  Hotel Grand: http://www.grandhotelagra.com/Restaurant.html )
+        Dinner - Enjoy Mughlai cuisine, check Oberoi Hotel and restaurant
+
 March 13-  drive morning @8a for Bharatpur - watch or play Holi - have lunch 
             Evening - drive to Jaipur, Spend evening enjoying a lavish Rajasthani dinner in front of a traditional folk dance
-	  Overnight Jaipur (Hotel Mandawa Haveli; Hotel Rambagh Palace)
+	              at chowki dhani,sunrise at nahargarh fort, bapu bazar
+
+	  Overnight Jaipur (Hotel Rambagh Palace)
 March 14 - 
-            Jaipur- Amber Fort, Palace,  Snake charmer, Fabric dying, block printing, cotton weaving.
+            Jaipur- City Palace,  Snake charmer, Fabric dying, block printing, cotton weaving.
              Experience rickshaw ride, see bazaar
             If have time watch a bollywood movie at the famous Raj Mandir Cinema
         Overnight Jaipur (Hotel Mandawa Haveli; Hotel Rambagh Palace)
@@ -345,7 +360,9 @@ Education background-Electrical Engineer & Computer Science
 Data Science-
 Analyzing and interpreting data using advanced statistical methods
 Topic modeling using LDA. wordtovec - singular word, doctovec - 
-ML- Ensemble, RF
+Predictive model using Regression
+ML- Random Forest
+A decision tree is built using the whole dataset considering all features,but in random forests a fraction of the number of rows is selected at random and a particular number of features are selected at random to train on and a decision tree is built on this subset.
 
 Experience:
 Perform exploratory and feasibility analysis for Federation of State Medical Boards (FSMB) data & processes and provide technology roadmap to exploit Elastic Stack for flexible search and matching capabilities with a goal to improve data quality and enhance automation.
@@ -542,7 +559,7 @@ cd elasticsear*
 
 .\bin\elasticsearch.bat --cluster.name=estest --node.name=estest_n1
 
-.\bin\logstash.bat -f c:\Users\shbhalla\fsmb\npiload.conf --configtest’
+.\bin\logstash.bat -f c:\Users\shbhalla\fsmb\npiload.conf --configtest
 
 October NPI Full file: 
 605,701,856 zip file
@@ -558,13 +575,6 @@ gc testdata.csv | select -last 2
 gc fn.txt | %{ $_ -replace '\d+', '($0)' } 
 
 Issue: looks like file created using gc is not UTF-8 but hex. Log stash doesn’t like it
-
-
-
-
-HSA account
-https://www.discoverybenefits.com/
-shrad..@gmail.com/236…SB
 
 
 
@@ -596,5 +606,6 @@ Issues
 
 
 Must exercise common courtesy and manner
-Must act with a common sense and purpose and extend our utmost consideration and appreciation.
+Culture of collaboration and appreciation; a sense of common goal and purpose ; where team work is aappreciated; no internal competition;  
+Language agnostic and even technology agnostic -- some leeway given to encourage creativity 
 

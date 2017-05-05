@@ -18,7 +18,6 @@ Chef Recipes(in ruby) contain scripts to
 ## Ansible -IT automation for servers (thousands of nodes)
 Ansible playbook- machine provisioning to code deployment.
 
-
 #DevOps
 Monitoring
 

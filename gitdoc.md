@@ -1,7 +1,23 @@
 # git - reference material
- ——
-git and github
-Go to github.com
+On mac you need brew- to install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+> Check out https://hub.github.com/  a command line wrapper for git
+$brew install hub
+git version
+hub version
+
+sudo git init
+sudo git add .
+sudo git commit -m "initial live site commit"
+
+-- create new repository from CLI
+curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO","private":"true"}'
+# Remember replace USER with your username and REPO with your repository/application name!
+git remote add origin git@github.com:USER/REPO.git
+git push origin master
+
+> Or go to github.com
 create new proj
 
 cd ~
@@ -81,6 +97,25 @@ $git push origin master
    [sparkref]: <https://github.com/shradhatx/reference/elkdoc>
    [nosqlref]: <https://github.com/shradhatx/reference/nosqldoc>
    [logstashref]: <https://github.com/shradhatx/reference/logstashdoc>
+
+
+#### git on EC2
+create rsa key and keep public key in ~/.ssh/authorized_keys
+
+create .ssh dir
+vi ~/.ssh/authorized_keys
+
+install git
+cd sitesrepo.git websites 
+cd sitesrepo.git && git init --bare
+
+mkdir hooks
+vi post-receive
+#!/bin/sh
+GIT_WORK_TREE=/home/ubuntu/websites git checkout -f
+
+chmod +x post-receive
+
 
 
 

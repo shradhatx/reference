@@ -11,8 +11,7 @@ Write benchmarks: 250K event writes/sec with a 5 node cluster
 > ES advantage over other stores-
  efficient access
  advance search capabilities
- - boosting, scoring, relevancy, significant terms, fuzzy matches, geo-distance, aggregation
-
+ - boosting, scoring, relevancy, significant terms, geo-distance, aggregation
 
 Lucene uses algorithm HyperLogLog++. Uses only kb of memory for billion distinct terms.
 Check youtube: [Alex Brasetvik](http://found.no/foundation)
@@ -63,9 +62,9 @@ consisency setting
 
 
 Indexing request goes to coordinator node, "write consistency" one by default or quorum 
-Search request uses LB and nvolves replicas & then scatter/gather
+Search request uses LB and involves replicas & then scatter/gather
 
-Shards in ES - is for colocation of data
+Shards(horizontal split) in ES - is for colocation of data
 
 ES creates 5 shards and 1 replica by default
 Shards can't be split across nodes.
@@ -88,10 +87,9 @@ Inverted index building requires lots of memory, built in segments that are flus
 Rolling restart Vs cluster restart
 
 > Difference between sharding and partition? 
-Sharding-keeping the related data together Vs partition-splitting the data for parallel processing
+Sharding-horizontal split to keeping the related data together Vs partition-splitting the data vertically ex functional grouping  
 
 # Sizing
-
 
 # ES and Spark streaming
 youtube: by @costinl (Costin Leau)
@@ -165,7 +163,7 @@ Segments are immutable. When you perform delete it only marks the doc for deleti
 Every 1s when buffer is refreshed (you can adjust the refreshed interval) the deleted documents get deleted. Added segment is visible to search. Older data is still there in warm cache.
 Query request comes to one shard — it becomes the coordinator. Coordinator sends request to other shards and gets the top 10 results.
 Q. Best practice to allocate memory between jvm and es?
-As you add memory to Heap space to jvm garbage collection becomes expensive. If it grows beyond 32G jvm can no longer use pointer compression. So you need to add more nodes to same physical machine. But ES is meant for scaling out not up. If you add another node to physical machine then route replicas correctly so not to have single point of failure.
+As you add memory to Heap space, jvm garbage collection becomes expensive. If it grows beyond 32G jvm can no longer use pointer compression. So you need to add more nodes to same physical machine. But ES is meant for scaling out not up. If you add another node to physical machine then route replicas correctly so not to have single point of failure.
 Q. Best practices for sharding
 Sharding by day or multiple day allows us to delete complete index. Cannot split a
 shard into 2 when data grows. You can easily add nodes to scale. So plan ahead. You have to allot big shard to node on more powerful machines.
@@ -184,15 +182,11 @@ Live migration when people are expecting it to be up all the time: use alias, ru
 
 ## Tableau Vs Kibana
 It depends -
-What does your client intend to do with the dashboard? How much
-interactivity do they want in place? Is the data real-time? What
-sort of advanced statistical analysis does your client want to
-run?
+What does your client intend to do with the dashboard? How much interactivity do they want in place? Is the data real-time? What
+sort of advanced statistical analysis does your client want to run?
 Tableau- Cons: slow, maintenance - unfriendly, requires restart
-Pros: Gets data from multiple systems. Statistical R integration
-built in.
-Kibana - connects to ES. Its limited but pretty interactive and
-minimal upfront effort to put useful and pretty dashboard,
+Pros: Gets data from multiple systems. Statistical R integration built in.
+Kibana - connects to ES. Its limited but pretty interactive and minimal upfront effort to put useful and pretty dashboard,
 
 
 ### Technical reference
@@ -202,7 +196,7 @@ minimal upfront effort to put useful and pretty dashboard,
 * [logstashref] - Logstash
 
 
-#### Use of hyperlink
+#### Useful urls
 
    [elkref]: <https://github.com/shradhatx/reference/elkdoc>
    [sparkref]: <https://github.com/shradhatx/reference/elkdoc>
@@ -233,13 +227,12 @@ Tips and tricks
 
 engineering.chartbeat.com/2015/05/26/logstash-deployment-and-scaling-tips/
 
-use kafka for queuing coz 16M events/s - can’t send this much to log stash
 
 # Casestudy - Datadog
 Cluster made of head and data nodes
 ~20 nodes, 2 replicas/shard
 Head nodes as load balancer accepting HTTP request
-Data nodes interact with head and data nodes
+Data nodes interact with head and other data nodes
 Rolling index with one month of event data each, plus 1 future
 Use slow and fast data nodes
 
@@ -352,12 +345,9 @@ Elastic search plugins
 https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html
 
 
-
-
-
 * Elasticsearch and unsupervised ML (anomaly detection - outliers, deviation, rare/different occurrence) with Prelert
 
-Probability-prediction model (more time  I spend to analyze the data better the predictions or confidence is )
+Probability-prediction model (more time I spend to analyze the data better the predictions or confidence is )
 
 Model picked depending on your data - ex periodicity determined - based on moving average — look for harmonics.
 
@@ -374,6 +364,13 @@ ML to solve world huger - ha ha
           - get answers in terms of graphs and relationships
 
        Same index in ES new ways to query
+
+For recommendation use significant terms and sample(through adding simple search term like 'must' we can include high quality criteria) to get better results.
+Save graph as percolate query and have real time recommendation.
+
+Graph capabilities shows interesting stuff by combining it with use of compound keys for doc identification in various different ways ex:zipcode+lastname+dob and fulladdress+last_name to describe the same person.
+
+
 
 * Cognitive computing
 4 cognitive capabilities to interact: vision, speech, data and language.
@@ -422,7 +419,7 @@ https://lucene.apache.org/core/3_6_0/scoring.html
 tf/idf performs pretty well. But there are other candidates that offer more tuning flexibility (ex: bm25 good for short documents)
 tf/idf is not the only ranking contributor in Elastic. Rank similarity in lucene/elastic is not a pure tf/idf implementation. (Ex: it does account for document length normalization too)  {difficult to compare with academic papers)
 
-Similarity model of lucene: VSM score, lucene conceptual scoring formula. practical scoring function
+Similarity model of lucene: SVM score, lucene conceptual scoring formula. 
 
 You can customize/improve lucene by-
       -Implementing your own query class,
@@ -432,15 +429,13 @@ ML (LDA or Word2Vec) - lot of statistical stuff to get to the answer. It is comp
 
 To create a good search experience it is key to combine textual similarity rank with metadata suiting the case.
 Compare the precision and recall of models.
-Precision- the percentage of relevant queries within the result
-Recall- the percentage of all relevant documents that are included in the result
 
 I strongly recommend taking the time to test both models with your documents- there can be a significant potential in using one model over other.
 
 Circumstantial Vs general proof.
 
 
-> Identify:
+> When fine tuning ES mappings, identify:
 i)String fields that are of exact-value —> not_analyzed
 ii)Full text fields that use standard or english language analyzer
 iii)one or two fields that need custom analyzer ex title field may need to be indexed in a way that supports find-as-you-type
@@ -667,6 +662,19 @@ GET /my_index/address/_search
 
 * caveat: Running prefix, regex, wildcard queries on a field with many unique terms can be resource intensive
 
+Q: Difference between Cache and JVM heap and stack
+CPU Cache is faster and more costly. CPU cache holds data that is referenced often automatically.
+
+JVM heap, stores the application global resource. Heap is typically allocated at application startup by the runtime, and is reclaimed when the application (technically process) exits.
+
+Stack - thread specific resource, allocated when a thread is created. Stack is faster than heap
+because the access pattern makes it trivial to allocate and deallocate memory from it (a pointer/integer is simply incremented or decremented), while the heap has much more complex bookkeeping involved in an allocation or deallocation. 
+ 
+Check this-
+http://www.programmerinterview.com/index.php/data-structures/difference-between-stack-and-heap/
+
+HyperLogLog+: single-value metrics aggregation that calculates an approximate count of distinct values. 
+algorithm for the count-distinct problem in a probabilistic way. It does it in approximate way.
 
 ### Technical reference
 * [elkref] - all about elastic stack
