@@ -1,8 +1,5 @@
 ### Tell me about yourself.
-I am a IT professional passionate about technology and keeping myself relevant helpng my clients create products and solve business problems (through innovation and deep knowledge in  IT )
-
-(same as accenture/perficient:  a global company dealing with  fortune 500, many industries)
-Trends: blockchain; AI. User want engaging experience
+I am a IT professional passionate about technology and keeping myself relevant helpng my clients create products and solve business problems through innovation and deep knowledge in  IT 
 
 Held variety of roles over many years in IT
 - contributed in technical design and s/w development, used  many languages
